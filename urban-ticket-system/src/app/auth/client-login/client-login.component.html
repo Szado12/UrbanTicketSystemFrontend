@@ -1,0 +1,11 @@
+<form [formGroup]="dataForm" (ngSubmit)="login()">
+    <label for="mail">E-mail: </label>
+    <input id="mail" type="email" formControlName="mail">
+
+    <label for="password">Password: </label>
+    <input id="password" type="password" formControlName="password">
+
+    <button type="submit" [disabled]="!dataForm.valid || !dataForm.dirty">Sign in</button>
+</form>
+<span>New to Urban Ticket? <a href="auth/client/register">Create an account.</a></span>
+

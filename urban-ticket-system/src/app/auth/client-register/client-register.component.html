@@ -1,0 +1,17 @@
+<form [formGroup]="dataForm" (ngSubmit)="register()">
+    <label for="firstName">First name</label>
+    <input id="firstName" type="text" formControlName="firstName">
+
+    <label for="lastName">Last name</label>
+    <input id="lastName" type="text" formControlName="lastName">
+
+    <label for="mail">E-mail</label>
+    <input id="mail" type="email" formControlName="mail">
+
+    <label for="password">Password</label>
+    <input id="password" type="password" formControlName="password">
+
+    <button type="submit" [disabled]="!dataForm.valid || !dataForm.dirty">Sign up</button>
+</form>
+<span>Already have account? <a href="auth/client/login">Sign in.</a></span>
+
