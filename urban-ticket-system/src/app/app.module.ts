@@ -10,6 +10,7 @@ import { InspectorLoginComponent } from './auth/inspector-login/inspector-login.
 import { TicketInspectorComponent } from './ticket-inspector/ticket-inspector.component';
 import { ClientComponent } from './client/client.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

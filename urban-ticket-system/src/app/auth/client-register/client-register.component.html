@@ -1,17 +1,38 @@
-<form [formGroup]="dataForm" (ngSubmit)="register()">
-    <label for="firstName">First name</label>
-    <input id="firstName" type="text" formControlName="firstName">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
 
-    <label for="lastName">Last name</label>
-    <input id="lastName" type="text" formControlName="lastName">
-
-    <label for="mail">E-mail</label>
-    <input id="mail" type="email" formControlName="mail">
-
-    <label for="password">Password</label>
-    <input id="password" type="password" formControlName="password">
-
-    <button type="submit" [disabled]="!dataForm.valid || !dataForm.dirty">Sign up</button>
-</form>
-<span>Already have account? <a href="auth/client/login">Sign in.</a></span>
-
+            <form [formGroup]="dataForm" (ngSubmit)="register()" class="form-inline">
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="firstName">First name</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="firstName" type="text" formControlName="firstName">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="lastName">Last name</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="lastName" type="text" formControlName="lastName">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="mail">E-mail</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="mail" type="email" formControlName="mail">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label" for="password">Password</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" id="password" type="password" formControlName="password">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-primary" type="submit" [disabled]="!dataForm.valid || !dataForm.dirty">Sign
+                        up</button>
+                </div>
+            </form>
+            <span>Already have account? <a href="auth/client/login">Sign in.</a></span>
+        </div>
+    </div>
+</div>
