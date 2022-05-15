@@ -24,7 +24,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 		ClientComponent
 	],
 	imports: [ BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule, NgbModule, FlexLayoutModule ],
-	providers: [],
+	providers: [ { provide: 'BASE_API_URL', useValue: 'http://localhost:8080' } ],
 	bootstrap: [ AppComponent ]
 })
 export class AppModule {}

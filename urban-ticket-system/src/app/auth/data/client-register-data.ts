@@ -1,6 +1,6 @@
 export interface ClientRegisterData {
-    firstName: string;
-    lastName: string;
-    mail: string;
-    password: string;
-  }
+	name: string;
+	surname: string;
+	email: string;
+	password: string;
+}

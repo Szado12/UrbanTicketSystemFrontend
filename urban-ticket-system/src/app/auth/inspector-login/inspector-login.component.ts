@@ -6,31 +6,29 @@ import { InspectorLoginData } from '../data/inspector-login-data';
 import { AuthService } from '../service/auth.service';
 
 @Component({
-  selector: 'app-inspector-login',
-  templateUrl: './inspector-login.component.html',
-  styleUrls: ['./inspector-login.component.scss']
+	selector: 'app-inspector-login',
+	templateUrl: './inspector-login.component.html',
+	styleUrls: [ './inspector-login.component.scss' ]
 })
 export class InspectorLoginComponent {
+	dataForm = new FormGroup({
+		email: new FormControl(
+			'',
+			Validators.compose([ Validators.email, Validators.required, Validators.maxLength(50) ])
+		),
+		password: new FormControl('', Validators.compose([ Validators.required, Validators.maxLength(50) ]))
+	});
 
-  dataForm = new FormGroup({
-    mail: new FormControl('', Validators.compose([Validators.email, Validators.required, Validators.maxLength(50)])),
-    password: new FormControl('', Validators.compose([Validators.required, Validators.maxLength(50)])),
-  });
+	constructor(private authService: AuthService, private route: Router) {}
 
-  constructor(
-    private authService: AuthService,
-    private route: Router) {}
-
-  login() {
-    this.authService.inspectorLogin(this.dataForm.value as InspectorLoginData)
-      .subscribe(
-        (value) => {
-          if(value) {
-            this.route.navigate(['/inspector']);
-          }
-        },
-        (error) => {
-        }
-    );
-  }
+	login() {
+		this.authService.inspectorLogin(this.dataForm.value as InspectorLoginData).subscribe(
+			(value) => {
+				if (value) {
+					this.route.navigate([ '/inspector' ]);
+				}
+			},
+			(error) => {}
+		);
+	}
 }

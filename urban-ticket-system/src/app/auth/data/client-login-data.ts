@@ -1,5 +1,4 @@
 export interface ClientLoginData {
-    mail: string;
-    password: string;
-  }
-  
+	email: string;
+	password: string;
+}
