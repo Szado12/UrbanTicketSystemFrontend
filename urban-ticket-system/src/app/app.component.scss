@@ -1,3 +1,24 @@
 .navbar-custom{
     background-color: #057ff7;
 }
+html{
+    height: 100%;
+}
+body{
+    height:100%;
+}
+.bg-image{
+    width: 100%;
+    height: 94vh;
+    background-image: url("../assets/pienkneautobusy.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.main-container{
+    padding: 50px 0px;
+    background-color: white;
+    opacity: 90%;
+}
+app-root{
+    height: 100%;
+}

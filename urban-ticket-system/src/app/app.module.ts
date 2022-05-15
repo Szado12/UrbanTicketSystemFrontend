@@ -10,26 +10,21 @@ import { InspectorLoginComponent } from './auth/inspector-login/inspector-login.
 import { TicketInspectorComponent } from './ticket-inspector/ticket-inspector.component';
 import { ClientComponent } from './client/client.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AuthComponent,
-    ClientLoginComponent,
-    ClientRegisterComponent,
-    InspectorLoginComponent,
-    TicketInspectorComponent,
-    ClientComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    NgbModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		AuthComponent,
+		ClientLoginComponent,
+		ClientRegisterComponent,
+		InspectorLoginComponent,
+		TicketInspectorComponent,
+		ClientComponent
+	],
+	imports: [ BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule, NgbModule, FlexLayoutModule ],
+	providers: [],
+	bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {}
