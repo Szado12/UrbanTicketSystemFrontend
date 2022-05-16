@@ -13,7 +13,7 @@ export class ClientRegisterComponent {
 	dataForm = new FormGroup({
 		name: new FormControl('', Validators.compose([ Validators.required, Validators.maxLength(50) ])),
 		surname: new FormControl('', Validators.compose([ Validators.required, Validators.maxLength(50) ])),
-		email: new FormControl(
+		username: new FormControl(
 			'',
 			Validators.compose([ Validators.email, Validators.required, Validators.maxLength(50) ])
 		),

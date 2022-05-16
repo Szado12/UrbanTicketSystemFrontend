@@ -11,7 +11,7 @@ import { AuthService } from '../service/auth.service';
 })
 export class ClientLoginComponent {
 	dataForm = new FormGroup({
-		email: new FormControl(
+		username: new FormControl(
 			'',
 			Validators.compose([ Validators.email, Validators.required, Validators.maxLength(50) ])
 		),
