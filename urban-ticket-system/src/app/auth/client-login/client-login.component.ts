@@ -9,6 +9,7 @@ import {
 	SocialUser,
 } from 'angularx-social-login';
 import { FacebookLoginData } from '../data/facebook-login-data';
+import { UserRole } from '../data/user-roles';
 
 @Component({
 	selector: 'app-client-login',
@@ -27,7 +28,7 @@ export class ClientLoginComponent {
 	constructor(private authService: AuthService, private socialAuthService: SocialAuthService, private route: Router) {}
 
 	login() {
-		this.authService.login(this.dataForm.value as LoginRequestData).subscribe(
+		this.authService.login(this.dataForm.value as LoginRequestData, UserRole.Client).subscribe(
 			(value) => {
 				if (value) {
 					this.route.navigate([ '/client' ]);

@@ -6,7 +6,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div [fxShow]="user?.role == 'client'">
+            <div [fxShow]="checkRole() == 'Client'">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Buy a ticket</a>
@@ -19,7 +19,7 @@
                     </li>
                 </ul>
             </div>
-            <div [fxShow]="user?.role == 'inspector'">
+            <div [fxShow]="checkRole() == 'Inspector'">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Scan a ticket</a>
@@ -32,7 +32,7 @@
                     </li>
                 </ul>
             </div>
-            <div [fxShow]="user == null">
+            <div [fxShow]="checkRole() == null">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Zaloguj</a>

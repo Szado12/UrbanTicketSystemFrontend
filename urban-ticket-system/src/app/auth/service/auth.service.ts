@@ -8,10 +8,12 @@ import { TokenService } from './token.service';
 import { tap } from 'rxjs/operators';
 import { ResponseLoginData } from '../data/login-response-data';
 import { FacebookLoginData } from '../data/facebook-login-data';
+import { UserRole } from '../data/user-roles';
 
 const registerUrl = '/register';
 const loginUrl = '/login';
 const facebookLoginUrl = '/facebook/login';
+
 const OAUTH_CLIENT = 'express-client';
 const OAUTH_SECRET = 'express-secret';
 
@@ -34,21 +36,26 @@ export class AuthService {
 
 	redirectUrl = '';
 	
-	login(data: LoginRequestData): Observable<any> {
+	login(data: LoginRequestData, role: UserRole): Observable<ResponseLoginData> {
 		this.tokenService.removeToken();
-		const body = this.loginBody(data);
-		
-		return this.http.post<any>(this.baseUrl + loginUrl, body, HTTP_OPTIONS)
+
+		data.password = this.hashingService.hashString(data.password);
+		return this.http.post<ResponseLoginData>(this.baseUrl + loginUrl, data)
+		.pipe(
+			tap((res: ResponseLoginData) => {
+				this.tokenService.saveToken(res.token);
+				return localStorage.setItem('role', role.toString());
+			})
+		);
+	}
+
+	facebookLogin(data: FacebookLoginData): Observable<ResponseLoginData> {
+		return this.http.post<ResponseLoginData>(this.baseUrl + facebookLoginUrl, data)
 		.pipe(
 			tap((res: ResponseLoginData) => {
 				this.tokenService.saveToken(res.token);
 			})
 		);
-	}
-
-	facebookLogin(data: FacebookLoginData): Observable<Object> {
-		//return of(true);
-		return this.http.post(this.baseUrl + facebookLoginUrl, data);
 	}
 
 	clientRegister(data: ClientRegisterData): Observable<boolean> {
@@ -59,12 +66,4 @@ export class AuthService {
 	logout(): void {
 		this.tokenService.removeToken();
 	}
-
-	private loginBody(data: LoginRequestData) : HttpParams {
-		return new HttpParams()
-		.set('username', data.username)
-		.set('password', this.hashingService.hashString(data.password))
-		.set('grant_type', 'password');
-	}
-
 }
