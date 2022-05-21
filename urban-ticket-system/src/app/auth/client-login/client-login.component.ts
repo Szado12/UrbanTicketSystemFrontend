@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ClientLoginData } from '../data/client-login-data';
+import { LoginRequestData } from '../data/login-request-data';
 import { AuthService } from '../service/auth.service';
 import {
 	SocialAuthService,
@@ -27,7 +27,7 @@ export class ClientLoginComponent {
 	constructor(private authService: AuthService, private socialAuthService: SocialAuthService, private route: Router) {}
 
 	login() {
-		this.authService.clientLogin(this.dataForm.value as ClientLoginData).subscribe(
+		this.authService.login(this.dataForm.value as LoginRequestData).subscribe(
 			(value) => {
 				if (value) {
 					this.route.navigate([ '/client' ]);

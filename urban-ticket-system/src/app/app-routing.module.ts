@@ -4,6 +4,7 @@ import { AuthComponent } from './auth/auth.component';
 import { ClientLoginComponent } from './auth/client-login/client-login.component';
 import { ClientRegisterComponent } from './auth/client-register/client-register.component';
 import { InspectorLoginComponent } from './auth/inspector-login/inspector-login.component';
+import { AuthGuard } from './auth/service/auth.guard';
 import { ClientComponent } from './client/client.component';
 import { TicketInspectorComponent } from './ticket-inspector/ticket-inspector.component';
 
@@ -31,10 +32,12 @@ const routes: Routes = [
   },
   {
     path: 'client',
+    canActivate: [ AuthGuard ],
     component: ClientComponent
   },
   {
     path: 'inspector',
+    canActivate: [ AuthGuard ],
     component: TicketInspectorComponent
   }
 ];

@@ -9,10 +9,11 @@ import { ClientRegisterComponent } from './auth/client-register/client-register.
 import { InspectorLoginComponent } from './auth/inspector-login/inspector-login.component';
 import { TicketInspectorComponent } from './ticket-inspector/ticket-inspector.component';
 import { ClientComponent } from './client/client.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FacebookLoginProvider,	SocialLoginModule, SocialAuthServiceConfig, } from 'angularx-social-login';
+import { AuthInterceptor } from './auth/service/auth.interceptor';
 
 @NgModule({
 	declarations: [
@@ -37,7 +38,8 @@ import { FacebookLoginProvider,	SocialLoginModule, SocialAuthServiceConfig, } fr
 							 }
 						 ]
 					 }  as SocialAuthServiceConfig,
-				 } ],
+				 },
+				 {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
 	bootstrap: [ AppComponent ]
 })
 export class AppModule {}
