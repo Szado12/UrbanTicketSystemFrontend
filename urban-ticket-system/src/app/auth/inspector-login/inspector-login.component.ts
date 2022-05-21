@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginRequestData } from '../data/login-request-data';
+import { UserRole } from '../data/user-roles';
 import { AuthService } from '../service/auth.service';
 
 @Component({
@@ -21,7 +22,7 @@ export class InspectorLoginComponent {
 	constructor(private authService: AuthService, private route: Router) {}
 
 	login() {
-		this.authService.login(this.dataForm.value as LoginRequestData).subscribe(
+		this.authService.login(this.dataForm.value as LoginRequestData, UserRole.Inspector).subscribe(
 			(value) => {
 				if (value) {
 					this.route.navigate([ '/inspector' ]);
