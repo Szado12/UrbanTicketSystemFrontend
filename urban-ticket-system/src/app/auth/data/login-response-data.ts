@@ -1,8 +1,8 @@
-import {UserRole} from './user-roles'
+import { UserRole } from './user-roles'
 
-export interface  ResponseLoginData{
-  token: String,
+export interface  ResponseLoginData {
+  token: string,
   role : UserRole,
-  firstName : String,
-  lastName : String
+  firstName : string,
+  lastName : string
 }

@@ -9,9 +9,10 @@ import { ClientRegisterComponent } from './auth/client-register/client-register.
 import { InspectorLoginComponent } from './auth/inspector-login/inspector-login.component';
 import { TicketInspectorComponent } from './ticket-inspector/ticket-inspector.component';
 import { ClientComponent } from './client/client.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AuthInterceptor } from './auth/service/auth.interceptor';
 
 @NgModule({
 	declarations: [
@@ -24,7 +25,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 		ClientComponent
 	],
 	imports: [ BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule, NgbModule, FlexLayoutModule ],
-	providers: [ { provide: 'BASE_API_URL', useValue: 'http://localhost:8080' } ],
+	providers: [ { provide: 'BASE_API_URL', useValue: 'http://localhost:8080' },
+	{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true} ],
 	bootstrap: [ AppComponent ]
 })
 export class AppModule {}
