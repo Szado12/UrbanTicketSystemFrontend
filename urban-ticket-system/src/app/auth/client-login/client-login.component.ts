@@ -17,6 +17,8 @@ import { UserRole } from '../data/user-roles';
 	styleUrls: [ './client-login.component.scss' ]
 })
 export class ClientLoginComponent {
+	loginError: boolean = false; 
+
 	dataForm = new FormGroup({
 		username: new FormControl(
 			'',
@@ -28,21 +30,23 @@ export class ClientLoginComponent {
 	constructor(private authService: AuthService, private socialAuthService: SocialAuthService, private route: Router) {}
 
 	login() {
+		this.loginError = false;
 		this.authService.login(this.dataForm.value as LoginRequestData, UserRole.Client).subscribe(
 			(value) => {
 				if (value) {
 					this.route.navigate([ '/client' ]);
 				}
 			},
-			(error) => {}
+			(error) => {
+				this.loginError = true
+			}
 		);
 	}
 
 	loginWithFacebook(): void {
 		this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
-		this.socialAuthService.authState.subscribe((user) => {
-			console.log(user.authToken);
-			this.authService.facebookLogin(JSON.parse('{ "accessToken": "'+user.authToken+'" }') as FacebookLoginData).subscribe(
+		this.socialAuthService.authState.subscribe((user: any) => {
+			this.authService.facebookLogin(JSON.parse('{ "accessToken": "' + user.authToken + '" }') as FacebookLoginData).subscribe(
 				response => console.log(response)
 			);
 		});

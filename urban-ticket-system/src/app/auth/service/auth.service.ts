@@ -9,6 +9,7 @@ import { tap } from 'rxjs/operators';
 import { ResponseLoginData } from '../data/login-response-data';
 import { FacebookLoginData } from '../data/facebook-login-data';
 import { UserRole } from '../data/user-roles';
+import { RoleService } from './role.service';
 
 const registerUrl = '/register';
 const loginUrl = '/login';
@@ -32,28 +33,34 @@ export class AuthService {
 		private readonly http: HttpClient, 
 		private readonly hashingService : HashingService, 
 		private tokenService: TokenService,
+		private roleService: RoleService,
 		@Inject('BASE_API_URL') private baseUrl: string) {}
 
 	redirectUrl = '';
 	
 	login(data: LoginRequestData, role: UserRole): Observable<ResponseLoginData> {
 		this.tokenService.removeToken();
+		this.roleService.removeRole();
 
 		data.password = this.hashingService.hashString(data.password);
 		return this.http.post<ResponseLoginData>(this.baseUrl + loginUrl, data)
 		.pipe(
 			tap((res: ResponseLoginData) => {
 				this.tokenService.saveToken(res.token);
-				return localStorage.setItem('role', role.toString());
+				this.roleService.saveRole(role.toString());
 			})
 		);
 	}
 
 	facebookLogin(data: FacebookLoginData): Observable<ResponseLoginData> {
+		this.tokenService.removeToken();
+		this.roleService.removeRole();
+
 		return this.http.post<ResponseLoginData>(this.baseUrl + facebookLoginUrl, data)
 		.pipe(
 			tap((res: ResponseLoginData) => {
 				this.tokenService.saveToken(res.token);
+				this.roleService.saveRole(UserRole.Client.toString());
 			})
 		);
 	}
@@ -65,5 +72,6 @@ export class AuthService {
 
 	logout(): void {
 		this.tokenService.removeToken();
+		this.roleService.removeRole();
 	}
 }

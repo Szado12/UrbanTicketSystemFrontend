@@ -6,7 +6,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div [fxShow]="checkRole() == 'Client'">
+            <div [fxShow]="roleService.getRole() == 'Client'">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Buy a ticket</a>
@@ -17,9 +17,12 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">My profile</a>
                     </li>
+                    <li class="nav-item" (click)="authService.logout()">
+                        <a class="nav-link active" aria-current="page" href="/auth">Log out</a>
+                    </li>
                 </ul>
             </div>
-            <div [fxShow]="checkRole() == 'Inspector'">
+            <div [fxShow]="roleService.getRole() == 'Inspector'">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Scan a ticket</a>
@@ -30,13 +33,13 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">My profile</a>
                     </li>
+                    <li class="nav-item" (click)="authService.logout()">
+                        <a class="nav-link active" aria-current="page" href="/auth">Log out</a>
+                    </li>
                 </ul>
             </div>
-            <div [fxShow]="checkRole() == null">
+            <div [fxShow]="roleService.getRole() == null">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Zaloguj</a>
-                    </li>
                 </ul>
             </div>
         </div>

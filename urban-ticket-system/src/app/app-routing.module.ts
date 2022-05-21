@@ -33,17 +33,11 @@ const routes: Routes = [
   {
     path: 'client',
     canActivate: [ AuthGuard ],
-    data: {
-      role: 'Client'
-    },
     component: ClientComponent
   },
   {
     path: 'inspector',
     canActivate: [ AuthGuard ],
-    data: {
-      role: 'Inspector'
-    },
     component: TicketInspectorComponent
   }
 ];
