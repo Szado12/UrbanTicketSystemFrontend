@@ -1,0 +1,14 @@
+<div class="card"
+  [ngClass]="{'category':ticketData.category ==  1, 'category2': ticketData.category ==  2, 'category3':ticketData.category ==  3}">
+  <div class="card-body">
+    <h5 class="card-title">{{ticketData.displayName}}</h5>
+    <div class="row">
+      <div class="col-8">
+        <h6>{{ticketData.reduce ? "Reduced" : "Standard"}}</h6>
+        <h6>Price: {{(ticketData.price/100).toFixed(2)}} zł </h6>
+      </div>
+      <div class="col-4 cart">
+      </div>
+    </div>
+  </div>
+</div>

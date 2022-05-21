@@ -1,0 +1,29 @@
+<div class="container">
+  <div class=row>
+    <div class="col-6 col-md-4 col-xl-3">
+      <div class="mb-3 row">
+        <label for="ticketType" class="col-lg-4 col-form-label text-nowrap">Ticket Type:</label>
+        <div class="col-lg-8">
+          <select class="form-select" id="ticketType" [ngModel]="selectedType" (change)="onChange()">
+            <!-- <option *ngFor="let type of types ; index as i;" [ngValue]="i">
+              {{type}}
+            </option> -->
+            <option [value]="i" *ngFor="let i of types">{{i}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-xl-3">
+      <div class="row">
+        <label for="ticketType" class="col-lg-4 col-form-label">Reduce:</label>
+        <div class="col-lg-8">
+          <select class="form-select" id="ticketType" [ngModel]="selectedReduce" (change)="onChange()">
+            <option *ngFor="let reduce of reduces ; index as i;" [ngValue]="i">
+              {{reduce}}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -7,49 +7,57 @@ import { InspectorLoginComponent } from './auth/inspector-login/inspector-login.
 import { AuthGuard } from './auth/service/auth.guard';
 import { ClientComponent } from './client/client.component';
 import { TicketInspectorComponent } from './ticket-inspector/ticket-inspector.component';
-
+import { BuyTicketComponent } from './tickets/buy-ticket/buy-ticket.component';
 const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/auth'
+    redirectTo: '/auth',
   },
   {
     path: 'auth',
-    component: AuthComponent
+    component: AuthComponent,
   },
   {
     path: 'auth/client/login',
-    component: ClientLoginComponent
+    component: ClientLoginComponent,
   },
   {
     path: 'auth/client/register',
-    component: ClientRegisterComponent
+    component: ClientRegisterComponent,
   },
   {
     path: 'auth/inspector/login',
-    component: InspectorLoginComponent
+    component: InspectorLoginComponent,
   },
   {
     path: 'client',
-    canActivate: [ AuthGuard ],
+    canActivate: [AuthGuard],
     data: {
-      role: 'Client'
+      role: 'Client',
     },
-    component: ClientComponent
+    component: ClientComponent,
   },
   {
     path: 'inspector',
-    canActivate: [ AuthGuard ],
+    canActivate: [AuthGuard],
     data: {
-      role: 'Inspector'
+      role: 'Inspector',
     },
-    component: TicketInspectorComponent
-  }
+    component: TicketInspectorComponent,
+  },
+  {
+    path: 'buy-ticket',
+    canActivate: [AuthGuard],
+    data: {
+      role: 'Client',
+    },
+    component: BuyTicketComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
