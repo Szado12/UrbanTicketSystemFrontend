@@ -1,4 +1,4 @@
-export interface InspectorLoginData {
+export interface LoginRequestData {
 	username: string;
 	password: string;
 }
