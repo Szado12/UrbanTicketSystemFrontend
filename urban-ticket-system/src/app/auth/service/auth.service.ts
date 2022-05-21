@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { ClientLoginData } from '../data/client-login-data';
 import { ClientRegisterData } from '../data/client-register-data';
 import { InspectorLoginData } from '../data/inspector-login-data';
+import { HashingService } from './hashing.service';
 
 const registerUrl = '/register';
 const loginUrl = '/login';
@@ -12,20 +13,20 @@ const loginUrl = '/login';
 	providedIn: 'root'
 })
 export class AuthService {
-	constructor(private readonly http: HttpClient, @Inject('BASE_API_URL') private baseUrl: string) {}
+	constructor(private readonly http: HttpClient, private readonly hashingService : HashingService, @Inject('BASE_API_URL') private baseUrl: string) {}
 
 	clientLogin(data: ClientLoginData): Observable<boolean> {
-		//return of(true);
+    data.password = this.hashingService.hashString(data.password);
 		return this.http.post<boolean>(this.baseUrl + loginUrl, data);
 	}
 
 	clientRegister(data: ClientRegisterData): Observable<boolean> {
-		//return of(true);
+    data.password = this.hashingService.hashString(data.password);
 		return this.http.post<boolean>(this.baseUrl + registerUrl, data);
 	}
 
 	inspectorLogin(data: InspectorLoginData): Observable<boolean> {
-		//return of(true);
+    data.password = this.hashingService.hashString(data.password);
 		return this.http.post<boolean>(this.baseUrl + loginUrl, data);
 	}
 }
