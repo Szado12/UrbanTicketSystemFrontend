@@ -35,8 +35,10 @@ export class ClientLoginComponent {
 		this.loading = true; 
 		this.authService.login(this.dataForm.value as LoginRequestData, UserRole.Client).subscribe(
 			(value) => {
-				if (value) {
+				if (value.role == UserRole.Client.toString()) {
 					this.route.navigate([ '/client' ]);
+				} else {
+					this.loginError = true
 				}
 				this.loading = false; 
 			},
@@ -54,8 +56,10 @@ export class ClientLoginComponent {
 		this.socialAuthService.authState.subscribe((user: any) => {
 			this.authService.facebookLogin(JSON.parse('{ "accessToken": "' + user.authToken + '" }') as FacebookLoginData).subscribe(
 				(value) => {
-					if (value) {
+					if (value.role == UserRole.OauthClient.toString()) {
 						this.route.navigate([ '/client' ]);
+					} else {
+						this.loginError = true
 					}
 					this.loading = false; 
 				},

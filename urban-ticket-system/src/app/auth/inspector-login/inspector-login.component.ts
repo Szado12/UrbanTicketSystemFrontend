@@ -12,6 +12,8 @@ import { AuthService } from '../service/auth.service';
 })
 export class InspectorLoginComponent {
 	loading: boolean = false; 
+	loginError: boolean = false; 
+
 	dataForm = new FormGroup({
 		username: new FormControl(
 			'',
@@ -24,15 +26,20 @@ export class InspectorLoginComponent {
 
 	login() {
 		this.loading = true; 
+		this.loginError = false;
+
 		this.authService.login(this.dataForm.value as LoginRequestData, UserRole.Inspector).subscribe(
 			(value) => {
-				if (value) {
+				if (value.role == UserRole.Inspector.toString()) {
 					this.route.navigate([ '/inspector' ]);
+				} else {
+					this.loginError = true;
 				}
 				this.loading = false; 
 			},
 			(error) => {
 				this.loading = false; 
+				this.loginError = true;
 			}
 		);
 	}
