@@ -29,8 +29,8 @@
                 </div>
                 <span class="red" [fxShow]="accountAlreadyExist">Account already exists.</span>
                 <div class="d-flex justify-content-center">
-                    <button class="btn btn-primary" type="submit" [disabled]="!dataForm.valid || !dataForm.dirty">Sign
-                        up</button>
+                    <button mat-raised-button class="btn btn-primary" [disabled]="!dataForm.valid || !dataForm.dirty || loading" type="submit">Sign up</button>
+                    <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
                 </div>
             </form>
             <span>Already have account? <a href="auth/client/login">Sign in.</a></span>

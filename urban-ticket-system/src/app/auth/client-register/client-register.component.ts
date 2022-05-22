@@ -12,6 +12,7 @@ import { AuthService } from '../service/auth.service';
 })
 export class ClientRegisterComponent {
 	accountAlreadyExist = false; 
+	loading: boolean = false; 
 
 	dataForm = new FormGroup({
 		name: new FormControl('', Validators.compose([ Validators.required, Validators.maxLength(50) ])),
@@ -27,16 +28,19 @@ export class ClientRegisterComponent {
 
 	register() {
 		this.accountAlreadyExist = false;
+		this.loading = true; 
 		this.authService.clientRegister(this.dataForm.value as ClientRegisterData).subscribe(
 			(value) => {
 				if (value) {
 					this.route.navigate([ '/auth/client/login' ]);
 				}
+				this.loading = false; 
 			},
 			(error: HttpErrorResponse ) => { 
 				if (error.error.message.includes('already in use')) {
 					this.accountAlreadyExist = true;
 				}
+				this.loading = false;
 			}
 		);
 	}
