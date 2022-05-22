@@ -15,9 +15,10 @@
                         <input class="form-control" id="password" type="password" formControlName="password">
                     </div>
                 </div>
+                <span class="red" [fxShow]="loginError">Invalid e-mail or password.</span>
                 <div class="d-flex justify-content-center">
-                    <button class="btn btn-primary" type="submit" [disabled]="!dataForm.valid || !dataForm.dirty">Sign
-                        in</button>
+                    <button mat-raised-button class="btn btn-primary" [disabled]="!dataForm.valid || !dataForm.dirty || loading" type="submit">Sign in</button>
+                    <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
                 </div>
             </form>
         </div>

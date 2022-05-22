@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { UserRole } from './auth/data/user-roles';
-import { User } from './data/user';
+import { AuthService } from './auth/service/auth.service';
+import { RoleService } from './auth/service/role.service';
 
 @Component({
 	selector: 'app-root',
@@ -8,7 +8,7 @@ import { User } from './data/user';
 	styleUrls: [ './app.component.scss' ]
 })
 export class AppComponent {
-	checkRole(): string | null {
-		return localStorage.getItem('role')
-	}
+	constructor(
+		public roleService: RoleService,
+		public authService: AuthService) {}
 }

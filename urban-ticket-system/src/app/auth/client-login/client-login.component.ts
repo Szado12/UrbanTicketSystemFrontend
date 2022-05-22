@@ -19,6 +19,9 @@ import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons';
 })
 export class ClientLoginComponent {
 	faFacebookSquare = faFacebookSquare;
+	loginError: boolean = false; 
+	loading: boolean = false; 
+
 	dataForm = new FormGroup({
 		username: new FormControl(
 			'',
@@ -30,22 +33,42 @@ export class ClientLoginComponent {
 	constructor(private authService: AuthService, private socialAuthService: SocialAuthService, private route: Router) {}
 
 	login() {
+		this.loginError = false;
+		this.loading = true; 
 		this.authService.login(this.dataForm.value as LoginRequestData, UserRole.Client).subscribe(
 			(value) => {
-				if (value) {
+				if (value.role == UserRole.Client.toString()) {
 					this.route.navigate([ '/client' ]);
+				} else {
+					this.loginError = true
 				}
+				this.loading = false; 
 			},
-			(error) => {}
+			(error) => {
+				this.loginError = true
+				this.loading = false; 
+			}
 		);
 	}
 
 	loginWithFacebook(): void {
+		this.loginError = false;
+		this.loading = true; 
 		this.socialAuthService.signIn(FacebookLoginProvider.PROVIDER_ID);
-		this.socialAuthService.authState.subscribe((user) => {
-			console.log(user.authToken);
-			this.authService.facebookLogin(JSON.parse('{ "accessToken": "'+user.authToken+'" }') as FacebookLoginData).subscribe(
-				response => console.log(response)
+		this.socialAuthService.authState.subscribe((user: any) => {
+			this.authService.facebookLogin(JSON.parse('{ "accessToken": "' + user.authToken + '" }') as FacebookLoginData).subscribe(
+				(value) => {
+					if (value.role == UserRole.OauthClient.toString()) {
+						this.route.navigate([ '/client' ]);
+					} else {
+						this.loginError = true
+					}
+					this.loading = false; 
+				},
+				(error) => {
+					this.loginError = true
+					this.loading = false; 
+				}
 			);
 		});
 	}

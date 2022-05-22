@@ -1,5 +1,6 @@
 export enum UserRole{
-  Administrator = 'Administrator',
-  Inspector = 'Inspector',
-  Client = 'Client'
+  Administrator = 'ADMINISTRATOR',
+  Inspector = 'INSPECTOR',
+  Client = 'CLIENT',
+  OauthClient = 'OAUTH_CLIENT'
 }
