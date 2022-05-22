@@ -47,7 +47,7 @@ export class AuthService {
 		.pipe(
 			tap((res: ResponseLoginData) => {
 				this.tokenService.saveToken(res.token);
-				this.roleService.saveRole(role.toString());
+				this.roleService.saveRole(res.role);
 			})
 		);
 	}
@@ -60,7 +60,7 @@ export class AuthService {
 		.pipe(
 			tap((res: ResponseLoginData) => {
 				this.tokenService.saveToken(res.token);
-				this.roleService.saveRole(UserRole.Client.toString());
+				this.roleService.saveRole(res.role);
 			})
 		);
 	}

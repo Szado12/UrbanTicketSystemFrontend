@@ -11,6 +11,7 @@ import { AuthService } from '../service/auth.service';
 	styleUrls: [ './inspector-login.component.scss' ]
 })
 export class InspectorLoginComponent {
+	loading: boolean = false; 
 	dataForm = new FormGroup({
 		username: new FormControl(
 			'',
@@ -22,13 +23,17 @@ export class InspectorLoginComponent {
 	constructor(private authService: AuthService, private route: Router) {}
 
 	login() {
+		this.loading = true; 
 		this.authService.login(this.dataForm.value as LoginRequestData, UserRole.Inspector).subscribe(
 			(value) => {
 				if (value) {
 					this.route.navigate([ '/inspector' ]);
 				}
+				this.loading = false; 
 			},
-			(error) => {}
+			(error) => {
+				this.loading = false; 
+			}
 		);
 	}
 }

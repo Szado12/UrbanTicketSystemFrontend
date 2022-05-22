@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
+import { RoleService } from './role.service';
 import { TokenService } from './token.service';
 
 @Injectable({
@@ -12,6 +13,7 @@ export class AuthGuard implements CanActivate {
   constructor(
     private authService: AuthService, 
     private tokenService: TokenService, 
+    private roleService: RoleService,
     private router: Router) {
   }
 
@@ -26,7 +28,7 @@ export class AuthGuard implements CanActivate {
   checkLogin(route: ActivatedRouteSnapshot, url: string): any {
 
     if (this.tokenService.getToken()) {
-      const userRole = localStorage.getItem('role');
+      const userRole = this.roleService.getRole();
       if (route.data.role && route.data.role.indexOf(userRole) === -1) {
         this.router.navigate(['/auth']);
         return false;
