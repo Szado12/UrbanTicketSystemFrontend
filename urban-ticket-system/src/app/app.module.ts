@@ -22,7 +22,7 @@ import { BuyTicketComponent } from './tickets/buy-ticket/buy-ticket.component';
 import { TicketListComponent } from './tickets/buy-ticket/ticket-list/ticket-list.component';
 import { TicketFilterComponent } from './tickets/buy-ticket/ticket-filter/ticket-filter.component';
 import { SingleTicketComponent } from './tickets/buy-ticket/ticket-list/single-ticket/single-ticket.component';
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +46,7 @@ import { SingleTicketComponent } from './tickets/buy-ticket/ticket-list/single-t
     FormsModule,
     FlexLayoutModule,
     SocialLoginModule,
+    FontAwesomeModule
   ],
   providers: [
     { provide: 'BASE_API_URL', useValue: 'http://localhost:8080' },

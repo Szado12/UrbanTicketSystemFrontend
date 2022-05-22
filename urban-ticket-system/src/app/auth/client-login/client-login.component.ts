@@ -10,6 +10,7 @@ import {
 } from 'angularx-social-login';
 import { FacebookLoginData } from '../data/facebook-login-data';
 import { UserRole } from '../data/user-roles';
+import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
 	selector: 'app-client-login',
@@ -17,6 +18,7 @@ import { UserRole } from '../data/user-roles';
 	styleUrls: [ './client-login.component.scss' ]
 })
 export class ClientLoginComponent {
+	faFacebookSquare = faFacebookSquare;
 	dataForm = new FormGroup({
 		username: new FormControl(
 			'',
