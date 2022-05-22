@@ -15,15 +15,15 @@ const registerUrl = '/register';
 const loginUrl = '/login';
 const facebookLoginUrl = '/facebook/login';
 
-const OAUTH_CLIENT = 'express-client';
-const OAUTH_SECRET = 'express-secret';
+// const OAUTH_CLIENT = 'express-client';
+// const OAUTH_SECRET = 'express-secret';
 
-const HTTP_OPTIONS = {
-	headers: new HttpHeaders({
-	  'Content-Type': 'application/json',
-	  Authorization: 'Basic ' + btoa(OAUTH_CLIENT + ':' + OAUTH_SECRET)
-	})
-  };
+// const HTTP_OPTIONS = {
+// 	headers: new HttpHeaders({
+// 	  'Content-Type': 'application/json',
+// 	  Authorization: 'Basic ' + btoa(OAUTH_CLIENT + ':' + OAUTH_SECRET)
+// 	})
+//   };
   
 @Injectable({
 	providedIn: 'root'
@@ -46,8 +46,10 @@ export class AuthService {
 		return this.http.post<ResponseLoginData>(this.baseUrl + loginUrl, data)
 		.pipe(
 			tap((res: ResponseLoginData) => {
-				this.tokenService.saveToken(res.token);
-				this.roleService.saveRole(res.role);
+				if(role.toString() == res.role){
+					this.tokenService.saveToken(res.token);
+					this.roleService.saveRole(res.role);
+				}
 			})
 		);
 	}
@@ -59,8 +61,10 @@ export class AuthService {
 		return this.http.post<ResponseLoginData>(this.baseUrl + facebookLoginUrl, data)
 		.pipe(
 			tap((res: ResponseLoginData) => {
-				this.tokenService.saveToken(res.token);
-				this.roleService.saveRole(res.role);
+				if(UserRole.OauthClient.toString() == res.role){
+					this.tokenService.saveToken(res.token);
+					this.roleService.saveRole(res.role);
+				}
 			})
 		);
 	}
