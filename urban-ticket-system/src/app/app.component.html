@@ -6,7 +6,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div [fxShow]="roleService.getRole() == 'CLIENT' || 'OAUTH_CLIENT'">
+            <div [fxShow]="roleService.getRole() == 'CLIENT' || roleService.getRole() == 'OAUTH_CLIENT'">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Buy a ticket</a>
