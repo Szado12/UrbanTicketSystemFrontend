@@ -28,10 +28,10 @@ export class BuyTicketComponent implements OnInit {
       case 0:
         break;
       case 1:
-        this.filtredTypes = this.filtredTypes.filter(x=>x.reduce);
+        this.filtredTypes = this.filtredTypes.filter(x=>x.reduced);
         break;
       case 2:
-        this.filtredTypes = this.filtredTypes.filter(x=>!x.reduce);
+        this.filtredTypes = this.filtredTypes.filter(x=>!x.reduced);
         break;
     }
   }
