@@ -42,7 +42,7 @@ const routes: Routes = [
     path: 'inspector',
     canActivate: [ AuthGuard ],    
     data: {
-      role: 'INSPECTOR'
+      role: 'STAFF'
     },
     component: TicketInspectorComponent,
   },
