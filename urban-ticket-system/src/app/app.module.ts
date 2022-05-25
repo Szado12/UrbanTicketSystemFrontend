@@ -14,6 +14,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FacebookLoginProvider,	SocialLoginModule, SocialAuthServiceConfig, } from 'angularx-social-login';
 import { AuthInterceptor } from './auth/service/auth.interceptor';
+import { ClientTicketsComponent } from './client/client-tickets/client-tickets.component';
+import { TicketDetailsComponent } from './client/client-tickets/ticket-details/ticket-details.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
 	declarations: [
@@ -23,9 +27,11 @@ import { AuthInterceptor } from './auth/service/auth.interceptor';
 		ClientRegisterComponent,
 		InspectorLoginComponent,
 		TicketInspectorComponent,
-		ClientComponent
+		ClientComponent,
+		ClientTicketsComponent,
+		TicketDetailsComponent
 	],
-	imports: [ BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule, NgbModule, FlexLayoutModule, SocialLoginModule ],
+	imports: [ BrowserAnimationsModule, MatDialogModule, BrowserModule, AppRoutingModule, ReactiveFormsModule, HttpClientModule, NgbModule, FlexLayoutModule, SocialLoginModule ],
 	providers: [ { provide: 'BASE_API_URL', useValue: 'http://localhost:8080' },
 				 {
 					 provide: 'SocialAuthServiceConfig',

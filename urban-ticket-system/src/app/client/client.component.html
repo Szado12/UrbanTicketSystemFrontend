@@ -1,1 +1,5 @@
-<p>client works!</p>
+<h1> {{data?.name}} {{data?.surname}}</h1>
+<button><i class="fas fa-edit"></i></button>
+<app-client-tickets
+    [userTickets]="data.tickets">
+</app-client-tickets>

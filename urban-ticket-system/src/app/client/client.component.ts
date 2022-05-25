@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ClientData } from './data/client-data';
+import { ClientDataService } from './service/client-data.service';
 
 @Component({
   selector: 'app-client',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./client.component.scss']
 })
 export class ClientComponent implements OnInit {
-
-  constructor() { }
+  data!: ClientData; 
+  constructor(
+    private clientDataService: ClientDataService
+  ) { }
 
   ngOnInit(): void {
+    this.clientDataService.getUserData()
+    .subscribe(value => {
+      this.data = value;
+      console.log(value)
+    })
+
+
   }
 
 }
