@@ -4,26 +4,26 @@
 
             <form [formGroup]="dataForm" (ngSubmit)="register()" class="form-inline">
                 <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label" for="name">First name</label>
-                    <div class="col-sm-10">
+                    <label class="col-12 col-lg-3  col-form-label" for="name">First name</label>
+                    <div class="col-12 col-lg-9">
                         <input class="form-control" id="name" type="text" formControlName="name">
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label" for="surname">Last name</label>
-                    <div class="col-sm-10">
+                    <label class="col-12 col-lg-3 text-nowrap col-form-label" for="surname">Last name</label>
+                    <div class="col-12 col-lg-9">
                         <input class="form-control" id="surname" type="text" formControlName="surname">
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label" for="username">E-mail</label>
-                    <div class="col-sm-10">
+                    <label class="col-12 col-lg-3 text-nowrap col-form-label" for="username">E-mail</label>
+                    <div class="col-12 col-lg-9">
                         <input class="form-control" id="email" type="email" formControlName="username">
                     </div>
                 </div>
                 <div class="row mb-3">
-                    <label class="col-sm-2 col-form-label" for="password">Password</label>
-                    <div class="col-sm-10">
+                    <label class="col-12 col-lg-3 text-nowrap col-form-label" for="password">Password</label>
+                    <div class="col-12 col-lg-9">
                         <input class="form-control" id="password" type="password" formControlName="password">
                     </div>
                 </div>
@@ -33,7 +33,9 @@
                     <i class="fa fa-spinner fa-spin" *ngIf="loading"></i>
                 </div>
             </form>
-            <span>Already have account? <a href="auth/client/login">Sign in.</a></span>
+            <div class="text-center">
+                <span>Already have account? <a href="auth/client/login">Sign in.</a></span>
+            </div>
         </div>
     </div>
 </div>

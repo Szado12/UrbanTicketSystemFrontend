@@ -9,7 +9,7 @@
             <div [fxShow]="roleService.getRole() == 'CLIENT' || roleService.getRole() == 'OAUTH_CLIENT'">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Buy a ticket</a>
+                        <a class="nav-link active" aria-current="page" href="buy-ticket">Buy a ticket</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/client">My profile</a>
@@ -19,7 +19,7 @@
                     </li>
                 </ul>
             </div>
-            <div [fxShow]="roleService.getRole() == 'INSPECTOR'">
+            <div [fxShow]="roleService.getRole() == 'STAFF'">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Scan a ticket</a>
@@ -39,11 +39,11 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 </ul>
             </div>
-        </div>
-    </div>
+      </div>
+  </div>
 </nav>
 <div class="bg-image">
-    <div class="container main-container">
-        <router-outlet></router-outlet>
-    </div>
+  <div class="container main-container">
+    <router-outlet></router-outlet>
+  </div>
 </div>
