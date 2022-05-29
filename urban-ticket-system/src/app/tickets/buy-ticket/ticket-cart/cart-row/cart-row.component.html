@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-7">
+        {{ticket[0].category.name}}
+    </div>
+    <div class = "col-2">
+        <div class="row">
+            <button class="btn btn-danger col-3" (click)="decreaseValue()">-</button>
+            <div class="col-6">
+                <input type="number text-center" class="form-control" (ngModelChange)="valueChangedEventEmit()" [(ngModel)]="ticket[1]"/>
+            </div>
+            <button class="btn btn-success col-3" (click)="increaseValue()">+</button>
+          </div>
+    </div>
+    <div class = "col-2">{{(ticket[0].price/100*ticket[1]).toFixed(2)}}</div>
+    <div class = "col-1"><fa-icon class="trash-icon" [icon]="faTrash" size="2x" (click)="removeItemEventEmit()"></fa-icon></div>
+</div>
+<hr class="border-2 border-top border-primary">

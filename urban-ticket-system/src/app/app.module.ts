@@ -23,6 +23,8 @@ import { TicketListComponent } from './tickets/buy-ticket/ticket-list/ticket-lis
 import { TicketFilterComponent } from './tickets/buy-ticket/ticket-filter/ticket-filter.component';
 import { SingleTicketComponent } from './tickets/buy-ticket/ticket-list/single-ticket/single-ticket.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TicketCartComponent } from './tickets/buy-ticket/ticket-cart/ticket-cart.component';
+import { CartRowComponent } from './tickets/buy-ticket/ticket-cart/cart-row/cart-row.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +38,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     TicketListComponent,
     TicketFilterComponent,
     SingleTicketComponent,
+    TicketCartComponent,
+    CartRowComponent,
   ],
   imports: [
     BrowserModule,

@@ -40,8 +40,6 @@ export class BuyTicketComponent implements OnInit {
     this.ticketDataService
       .getTicketCategories()
       .subscribe(res => this.ticketCategories = res);
-
-    this.ticketDataService.getTicketTypes().subscribe(res => console.log(res));
     this.ticketDataService.getTicketTypes().subscribe(res => 
     {
       this.ticketTypes = res;
