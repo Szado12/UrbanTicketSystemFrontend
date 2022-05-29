@@ -18,56 +18,71 @@ import {
   SocialAuthServiceConfig,
 } from 'angularx-social-login';
 import { AuthInterceptor } from './auth/service/auth.interceptor';
+import { ClientTicketsComponent } from './client/client-tickets/client-tickets.component';
+import { TicketDetailsComponent } from './client/client-tickets/ticket-details/ticket-details.component';
+import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BuyTicketComponent } from './tickets/buy-ticket/buy-ticket.component';
 import { TicketListComponent } from './tickets/buy-ticket/ticket-list/ticket-list.component';
 import { TicketFilterComponent } from './tickets/buy-ticket/ticket-filter/ticket-filter.component';
 import { SingleTicketComponent } from './tickets/buy-ticket/ticket-list/single-ticket/single-ticket.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { EditClientDataDialogComponent } from './client/edit-client-data-dialog/edit-client-data-dialog.component';
+import { EditClientPasswordDialogComponent } from './client/edit-client-password-dialog/edit-client-password-dialog.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { TicketCartComponent } from './tickets/buy-ticket/ticket-cart/ticket-cart.component';
 import { CartRowComponent } from './tickets/buy-ticket/ticket-cart/cart-row/cart-row.component';
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    AuthComponent,
-    ClientLoginComponent,
-    ClientRegisterComponent,
-    InspectorLoginComponent,
-    TicketInspectorComponent,
-    ClientComponent,
-    BuyTicketComponent,
-    TicketListComponent,
-    TicketFilterComponent,
-    SingleTicketComponent,
-    TicketCartComponent,
-    CartRowComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    NgbModule,
-    FormsModule,
-    FlexLayoutModule,
-    SocialLoginModule,
-    FontAwesomeModule
-  ],
-  providers: [
-    { provide: 'BASE_API_URL', useValue: 'http://localhost:8080' },
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider('375670794362966'),
-          },
-        ],
-      } as SocialAuthServiceConfig,
-    },
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-  ],
-  bootstrap: [AppComponent],
+	declarations: [
+		AppComponent,
+		AuthComponent,
+		ClientLoginComponent,
+		ClientRegisterComponent,
+		InspectorLoginComponent,
+		TicketInspectorComponent,
+		ClientComponent,
+		ClientTicketsComponent,
+		TicketDetailsComponent,
+		BuyTicketComponent,
+		TicketListComponent,
+		TicketFilterComponent,
+		SingleTicketComponent,
+    	TicketCartComponent,
+    	CartRowComponent,
+		EditClientDataDialogComponent,
+  EditClientPasswordDialogComponent,
+	],
+	imports: [ 
+		BrowserAnimationsModule,
+		MatDialogModule,
+		BrowserModule,
+		AppRoutingModule,
+		ReactiveFormsModule,
+		HttpClientModule,
+		NgbModule,
+		FormsModule,
+		FlexLayoutModule,
+		SocialLoginModule,
+		FontAwesomeModule,
+		MatTooltipModule ],
+	providers: [ { provide: 'BASE_API_URL', useValue: 'http://localhost:8080' },
+				 {
+					 provide: 'SocialAuthServiceConfig',
+					 useValue: {
+						 autoLogin: false,
+						 providers: [
+							 {
+								 id: FacebookLoginProvider.PROVIDER_ID,
+								 provider: new FacebookLoginProvider('375670794362966'),
+							 }
+						 ]
+					 }  as SocialAuthServiceConfig,
+				 },
+				 {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+				],
+				 
+	bootstrap: [ AppComponent ]
 })
+
 export class AppModule {}
