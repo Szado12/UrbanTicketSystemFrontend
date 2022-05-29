@@ -4,5 +4,6 @@
     <fa-icon [icon]="faLock" size="1x" (click)="changePassword()" matTooltip matTooltip="Change your password"></fa-icon>
 </div>
 <app-client-tickets
-    [userTickets]="data.tickets">
+    [userTickets]="userTickets"
+    [loaded]="loaded">
 </app-client-tickets>
