@@ -8,6 +8,7 @@ import { AuthGuard } from './auth/service/auth.guard';
 import { ClientComponent } from './client/client.component';
 import { TicketInspectorComponent } from './ticket-inspector/ticket-inspector.component';
 import { BuyTicketComponent } from './tickets/buy-ticket/buy-ticket.component';
+import { TicketCartComponent } from './tickets/buy-ticket/ticket-cart/ticket-cart.component';
 const routes: Routes = [
   {
     path: '',
@@ -54,6 +55,14 @@ const routes: Routes = [
     },
     component: BuyTicketComponent,
   },
+  {
+    path: 'ticket-cart',
+    canActivate: [AuthGuard],
+    data: {
+      role: ['CLIENT', 'OAUTH_CLIENT'],
+    },
+    component: TicketCartComponent,
+  }
 ];
 
 @NgModule({

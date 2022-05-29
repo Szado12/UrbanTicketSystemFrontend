@@ -30,6 +30,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { EditClientDataDialogComponent } from './client/edit-client-data-dialog/edit-client-data-dialog.component';
 import { EditClientPasswordDialogComponent } from './client/edit-client-password-dialog/edit-client-password-dialog.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { TicketCartComponent } from './tickets/buy-ticket/ticket-cart/ticket-cart.component';
+import { CartRowComponent } from './tickets/buy-ticket/ticket-cart/cart-row/cart-row.component';
+
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -45,6 +48,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 		TicketListComponent,
 		TicketFilterComponent,
 		SingleTicketComponent,
+    	TicketCartComponent,
+    	CartRowComponent,
 		EditClientDataDialogComponent,
   EditClientPasswordDialogComponent,
 	],

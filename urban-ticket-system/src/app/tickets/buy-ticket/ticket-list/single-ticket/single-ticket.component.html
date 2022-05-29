@@ -1,14 +1,20 @@
-<div class="card"
-  [ngClass]="{'category':ticketData.category.id ==  1, 'category2': ticketData.category.id ==  2, 'category3':ticketData.category.id ==  3}">
-  <div class="card-body">
-    <h5 class="card-title">{{ticketData.category.name}}</h5>
-    <div class="row">
-      <div class="col-8">
-        <h6>{{ticketData.reduced ? "Reduced" : "Standard"}}</h6>
-        <h6>Price: {{(ticketData.price/100).toFixed(2)}} zł </h6>
-      </div>
-      <div class="col-4 cart">
-      </div>
+
+<div class="cardWrap">
+  <div class="card cardLeft" [ngClass]="{'redLeft':ticketData.category.id ==  1, 'greenLeft': ticketData.category.id ==  2, 'blueLeft':ticketData.category.id ==  3}">
+    <h1>{{this.ticketData.category.name}}</h1>
+    <div class="title">
+      <h2>Reduce:</h2>
+      <span>{{this.ticketData.reduced ? "Reduced price" : "Standard price"}}</span>
     </div>
   </div>
-</div>
+  <div class="card cardRight" [ngClass]="{'redRight':ticketData.category.id ==  1, 'greenRight': ticketData.category.id ==  2, 'blueRight':ticketData.category.id ==  3}">
+    <div class="bus-icon"><fa-icon [icon]="faBus"></fa-icon></div>
+    <div class="number">
+      <div class="text">
+      <h4>{{(ticketData.price/100).toFixed(2)}} PLN</h4>
+      <h4><fa-icon class="cart-icon" [icon]="faCartShopping" (click)="buyTicket()"></fa-icon></h4>
+    </div>
+    </div>
+    <div class="barcode"></div>
+  </div>
+  </div>

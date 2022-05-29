@@ -1,0 +1,13 @@
+<div class="container">
+<h2>Cart:</h2>
+<hr class="border-2 border-top border-primary">
+<div [hidden]="displayTickets.length != 0">
+    <h4>Your cart is empty :(</h4>
+</div>
+<div class="md-3" *ngFor="let ticket of displayTickets">
+    <app-cart-row [ticket]="ticket" (removeItemEvent)="removeItem($event)" (valueChangedEvent)="changeValue($event)"></app-cart-row>
+</div>
+<div class="text-end">
+    <button class="btn btn-primary btn-margin" (click)="buyTickets()" [disabled]="displayTickets.length == 0" >Buy tickets</button>
+</div>
+</div>

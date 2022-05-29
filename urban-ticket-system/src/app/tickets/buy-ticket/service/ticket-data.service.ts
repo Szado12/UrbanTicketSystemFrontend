@@ -8,7 +8,7 @@ import { TicketType } from '../../data/ticketType';
 
 const getTickerCategoriesUrl = '/ticketcategories';
 const getTicketTypesUrl = '/tickettypes';
-
+const postTicketsToBuy = '/multipleTickets';
 @Injectable({
   providedIn: 'root',
 })
@@ -25,5 +25,9 @@ export class TicketDataService {
   }
   getTicketTypes():Observable<TicketType[]>{
     return this.http.get<TicketType[]>(this.baseUrl + getTicketTypesUrl);
+  }
+
+  postTicketsToBuy(ticketsToBuy:[number,number][]){
+    return this.http.post<[number,number]>(this.baseUrl + postTicketsToBuy, ticketsToBuy)
   }
 }
