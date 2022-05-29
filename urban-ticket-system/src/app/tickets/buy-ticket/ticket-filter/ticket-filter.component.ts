@@ -15,19 +15,32 @@ export class TicketFilterComponent implements OnInit {
       if(value){
       this.selectedType = 0;
       value.forEach((element:any) => {
-        this.availableTypes.push(element as TicketCategory)
+        this.availableTypes.push({id:element.id,name: this.remapName(element.name)} as TicketCategory)
       });
     }
   }
 
 
   availableTypes : TicketCategory[] =[{id:0,name:"Any Type"} as TicketCategory];
-  reduces = ['any', 'yes', 'no'];
+  reduces = ['Both', 'Reduced', 'Standard'];
   selectedType: number = 0; 
   selectedReduce: number = 0;
 
   onChange() {
     this.filters.emit({type : this.selectedType, reduce : this.selectedReduce});
+  }
+
+  remapName(oldName:string):string{
+    switch (oldName){
+      case 'SINGLE_TICKET':
+        return 'Single ticket';
+      case 'TIME_TICKET':
+        return 'Time ticket';
+      case 'SEASON_TICKET':
+        return 'Season ticket';
+      default:
+        return oldName;
+    }
   }
 
   ngOnInit(): void {

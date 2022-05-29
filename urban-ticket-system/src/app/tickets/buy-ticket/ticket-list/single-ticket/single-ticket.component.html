@@ -1,7 +1,7 @@
 
 <div class="cardWrap">
   <div class="card cardLeft" [ngClass]="{'redLeft':ticketData.category.id ==  1, 'greenLeft': ticketData.category.id ==  2, 'blueLeft':ticketData.category.id ==  3}">
-    <h1>{{this.ticketData.category.name}}</h1>
+    <h1>{{this.ticketData.displayName}}</h1>
     <div class="title">
       <h2>Reduce:</h2>
       <span>{{this.ticketData.reduced ? "Reduced price" : "Standard price"}}</span>

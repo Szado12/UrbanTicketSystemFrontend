@@ -1,7 +1,10 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { PostBuyMultipleTickets } from '../../data/post-multiple-tickets';
 import { TicketType } from '../../data/ticketType';
 import { BuyTicketCartService } from '../service/buy-ticket-cart.service';
 import { TicketDataService } from '../service/ticket-data.service';
+import { SuccessfulBuyComponent } from './successful-buy/successful-buy.component';
 
 @Component({
   selector: 'app-ticket-cart',
@@ -13,7 +16,7 @@ export class TicketCartComponent implements OnInit {
   ticketTypes : TicketType[] = [];
   ticketsInCart : Map<number,number> = new Map<number,number>();
   displayTickets : [TicketType,number][] = [];
-  constructor(private buyTicketCart : BuyTicketCartService,private ticketDataService: TicketDataService) { }
+  constructor(private buyTicketCart : BuyTicketCartService,private ticketDataService: TicketDataService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     
@@ -35,10 +38,15 @@ export class TicketCartComponent implements OnInit {
 
   buyTickets(){
     console.log(this.displayTickets.length);
-    this.ticketDataService.postTicketsToBuy(this.mapMaptoArray(this.ticketsInCart)).subscribe(
+    this.ticketDataService.postTicketsToBuy(this.mapMaptoPostBuyMultipleTickets(this.ticketsInCart)).subscribe(
       result => {
         this.buyTicketCart.clearAll();
         this.filterOutCartTickets();
+        const dialogRef = this.dialog.open(SuccessfulBuyComponent);
+
+        dialogRef.afterClosed().subscribe(result => {
+          console.log(result);
+    });
       },
       error => {
           console.log(error)
@@ -46,11 +54,16 @@ export class TicketCartComponent implements OnInit {
   ); 
   }
 
-  mapMaptoArray(map:Map<number,number>):[number,number][]
+  mapMaptoPostBuyMultipleTickets(map:Map<number,number>):PostBuyMultipleTickets
   {
-    var remmapedData :[number,number][] = []
+    var remmapedData : PostBuyMultipleTickets = {
+      ticketTypeIds: [],
+      ticketTypeCounts: []
+    }
+    
     for (let entry of map.entries()) {
-      remmapedData.push([entry[0],entry[1]]);
+      remmapedData.ticketTypeIds.push(entry[0]);
+      remmapedData.ticketTypeCounts.push(entry[1]);
     }
     return remmapedData;
   }
