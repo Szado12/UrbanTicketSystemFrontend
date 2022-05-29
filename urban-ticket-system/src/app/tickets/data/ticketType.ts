@@ -7,4 +7,5 @@ export interface TicketType {
   category: TicketCategory;
   minutesOfValidity: number;
   daysOfValidity: number;
+  displayName:string;
 }

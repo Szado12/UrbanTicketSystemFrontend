@@ -18,7 +18,7 @@ export class TicketListComponent implements OnInit {
 
   addTicket(ticketData:any){
       this.buyTicketCart.addTicket(ticketData[0],ticketData[1]);
-      this.message = ticketData[0].category.name + " added to cart!";
+      this.message = ticketData[0].displayName + " added to cart!";
       this.showMessage();
   }
 

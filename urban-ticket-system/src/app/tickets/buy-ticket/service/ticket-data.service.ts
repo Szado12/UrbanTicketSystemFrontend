@@ -5,10 +5,11 @@ import {
 import { Observable } from 'rxjs';
 import { TicketCategory } from '../../data/ticketCategory';
 import { TicketType } from '../../data/ticketType';
+import { PostBuyMultipleTickets } from '../../data/post-multiple-tickets';
 
 const getTickerCategoriesUrl = '/ticketcategories';
 const getTicketTypesUrl = '/tickettypes';
-const postTicketsToBuy = '/multipleTickets';
+const postTicketsToBuy = '/tickets';
 @Injectable({
   providedIn: 'root',
 })
@@ -27,7 +28,7 @@ export class TicketDataService {
     return this.http.get<TicketType[]>(this.baseUrl + getTicketTypesUrl);
   }
 
-  postTicketsToBuy(ticketsToBuy:[number,number][]){
-    return this.http.post<[number,number]>(this.baseUrl + postTicketsToBuy, ticketsToBuy)
+  postTicketsToBuy(ticketsToBuy:PostBuyMultipleTickets){
+    return this.http.post<number>(this.baseUrl + postTicketsToBuy, ticketsToBuy)
   }
 }

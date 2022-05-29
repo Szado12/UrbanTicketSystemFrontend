@@ -14,7 +14,7 @@
     </div>
     <div class="col-6 col-md-4 col-xl-3">
       <div class="row">
-        <label for="ticketType" class="col-lg-4 col-form-label">Reduce:</label>
+        <label for="ticketType" class="col-lg-4 col-form-label">Price:</label>
         <div class="col-lg-8">
           <select class="form-select" id="ticketType" [(ngModel)]="selectedReduce" (change)="onChange()">
             <option *ngFor="let reduce of reduces ; index as i;" [ngValue]="i">
