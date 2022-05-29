@@ -1,7 +1,24 @@
-<h1 mat-dialog-title>Hi!</h1>
-<div mat-dialog-content>
-  <p>What's your favorite animal?</p>
-</div>
-<div mat-dialog-actions>
-  <button mat-button cdkFocusInitial>Ok</button>
-</div>
+<h2 mat-dialog-title>Ticket details</h2>
+<mat-dialog-content class="mat-typography">
+
+    <div *ngFor="let detail of details">
+      <div [fxShow]="detail != null" fxLayout="row" fxLayoutGap="20px">
+        <div fxFlex="50%">
+       <p><strong> {{detail?.title}} </strong></p>
+        </div>
+        <div fxFlex="50%">
+            <p> {{detail?.selector}}</p>
+      
+          </div>
+      </div>
+    </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button 
+    mat-raised-button 
+    class="btn btn-primary" 
+    mat-dialog-close>
+    OK
+  </button>
+</mat-dialog-actions>
