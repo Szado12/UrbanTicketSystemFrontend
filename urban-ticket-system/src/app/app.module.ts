@@ -20,14 +20,16 @@ import {
 import { AuthInterceptor } from './auth/service/auth.interceptor';
 import { ClientTicketsComponent } from './client/client-tickets/client-tickets.component';
 import { TicketDetailsComponent } from './client/client-tickets/ticket-details/ticket-details.component';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BuyTicketComponent } from './tickets/buy-ticket/buy-ticket.component';
 import { TicketListComponent } from './tickets/buy-ticket/ticket-list/ticket-list.component';
 import { TicketFilterComponent } from './tickets/buy-ticket/ticket-filter/ticket-filter.component';
 import { SingleTicketComponent } from './tickets/buy-ticket/ticket-list/single-ticket/single-ticket.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import { EditClientDataDialogComponent } from './client/edit-client-data-dialog/edit-client-data-dialog.component';
+import { EditClientPasswordDialogComponent } from './client/edit-client-password-dialog/edit-client-password-dialog.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -43,6 +45,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 		TicketListComponent,
 		TicketFilterComponent,
 		SingleTicketComponent,
+		EditClientDataDialogComponent,
+  EditClientPasswordDialogComponent,
 	],
 	imports: [ 
 		BrowserAnimationsModule,
@@ -55,7 +59,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 		FormsModule,
 		FlexLayoutModule,
 		SocialLoginModule,
-		FontAwesomeModule ],
+		FontAwesomeModule,
+		MatTooltipModule ],
 	providers: [ { provide: 'BASE_API_URL', useValue: 'http://localhost:8080' },
 				 {
 					 provide: 'SocialAuthServiceConfig',
@@ -69,7 +74,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 						 ]
 					 }  as SocialAuthServiceConfig,
 				 },
-				 {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
+				 {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+				],
+				 
 	bootstrap: [ AppComponent ]
 })
 

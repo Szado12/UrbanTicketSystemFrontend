@@ -1,5 +1,8 @@
-<h1> {{data?.name}} {{data?.surname}}</h1>
-<button><i class="fas fa-edit"></i></button>
+<div>
+    <h1 class="inline"> {{data?.name}} {{data?.surname}} </h1>
+    <fa-icon [icon]="faEdit" size="1x" (click)="changeData()" matTooltip matTooltip="Change your data"></fa-icon>
+    <fa-icon [icon]="faLock" size="1x" (click)="changePassword()" matTooltip matTooltip="Change your password"></fa-icon>
+</div>
 <app-client-tickets
     [userTickets]="data.tickets">
 </app-client-tickets>
