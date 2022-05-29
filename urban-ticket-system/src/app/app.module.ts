@@ -32,6 +32,7 @@ import { EditClientPasswordDialogComponent } from './client/edit-client-password
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { TicketCartComponent } from './tickets/buy-ticket/ticket-cart/ticket-cart.component';
 import { CartRowComponent } from './tickets/buy-ticket/ticket-cart/cart-row/cart-row.component';
+import { ClientSingleTicketComponent } from './client/client-tickets/client-single-ticket/client-single-ticket.component';
 
 @NgModule({
 	declarations: [
@@ -52,6 +53,7 @@ import { CartRowComponent } from './tickets/buy-ticket/ticket-cart/cart-row/cart
     	CartRowComponent,
 		EditClientDataDialogComponent,
   EditClientPasswordDialogComponent,
+  ClientSingleTicketComponent,
 	],
 	imports: [ 
 		BrowserAnimationsModule,

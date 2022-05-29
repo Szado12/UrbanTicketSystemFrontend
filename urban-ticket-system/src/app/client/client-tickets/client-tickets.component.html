@@ -1,6 +1,19 @@
-<div [fxShow]="allLoaded" *ngFor="let ticket of ticketsList">
-    <span>{{ticket.id}}</span>
+<div [fxShow]="allLoaded">
+    <div [fxShow]="ticketsList.length > 0" class="row"> 
+        <div class="col-12 col-lg-6 col-xl-6" *ngFor="let ticket of ticketsList">
+            <app-client-single-ticket [ticketData]="ticket" (ticketDetailsEvent)="openDialog($event)"></app-client-single-ticket>
+        </div>
+    </div>
+
+    <div [fxShow]="ticketsList.length == 0"> 
+        <p>
+            <ngb-alert type="info" [dismissible]="false">
+                It seems like you don't have any tickets here.
+            </ngb-alert>
+        </p>
+    </div>
 </div>
 <div [fxShow]="!allLoaded" class="center">
     <fa-icon [icon]="faSpinner" size="4x" [spin]="true"></fa-icon>
 </div>
+

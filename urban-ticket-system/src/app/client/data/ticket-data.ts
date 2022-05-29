@@ -8,6 +8,7 @@ export interface TicketData {
 }
 
 export interface TicketType {
+    id: number,
     price: number,
     reduced: boolean,
     category: TicketCategory,
@@ -16,6 +17,7 @@ export interface TicketType {
 }
 
 export interface TicketCategory {
+    id: number,
     name: string
 }
 

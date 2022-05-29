@@ -2,11 +2,18 @@
     display: inline;
 }
 
-// a {
-//     color: #0d6efd !important;
-//     text-decoration: underline !important;
-// }
-
 fa-icon:hover {
     cursor: pointer;
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+.bold {
+    font-weight: bolder;
+}
+
+.normal {
+    font-weight: 300;
 }

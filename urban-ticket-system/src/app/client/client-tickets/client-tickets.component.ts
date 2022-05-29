@@ -15,7 +15,6 @@ export class ClientTicketsComponent implements OnInit {
   dataLoaded = false;
   ticketsLoaded = false;
 
-  ticketsExists = false;
   ticketsList: TicketData[] = [];
 
   @Input() set userTickets(value: TicketData[]) {
@@ -23,9 +22,6 @@ export class ClientTicketsComponent implements OnInit {
       console.log(value)
       this.ticketsLoaded = true;
       this.ticketsList = value;
-      if(this.ticketsList.length) {
-        this.ticketsExists = true;
-      }
       this.updateLoading();
     }
   }
@@ -44,9 +40,10 @@ export class ClientTicketsComponent implements OnInit {
     this.allLoaded = this.ticketsLoaded && this.dataLoaded;
   }
 
-  openDialog(): void {
+  openDialog(value: number) {
     const dialogRef = this.dialog.open(TicketDetailsComponent, {
-      width: '250px'
-    });
+      data: this.ticketsList.find(t => t.id == value),
+      width: '400px'
+    })
   }
 }
