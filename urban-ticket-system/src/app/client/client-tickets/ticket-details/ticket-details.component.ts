@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import * as moment from 'moment';
 import { ClientData } from '../../data/client-data';
 import { TicketData } from '../../data/ticket-data';
 
@@ -10,8 +11,8 @@ import { TicketData } from '../../data/ticket-data';
 })
 export class TicketDetailsComponent implements OnInit {
   details = [
-    {title: 'Bought Time', selector: this.data.boughtTime.toISOString().slice(0,10)},
-    this.data.validatedInBus ? {title: 'Validated Time', selector: this.data.validatedTime.toISOString().slice(0,10) } : null,
+    {title: 'Bought Time', selector: moment(this.data.boughtTime).toISOString().slice(0,10)},
+    this.data.validatedInBus ? {title: 'Validated Time', selector: moment(this.data.validatedTime).toISOString().slice(0,10) } : null,
     {title: 'Price', selector: (this.data.type.price/100).toFixed(2) + ' PLN'},
     {title: 'Reduction', selector: this.data.type.reduced ? 'Reduced price' : 'Standard price'},
     {title: 'Category', selector: this.data.type.category.name},

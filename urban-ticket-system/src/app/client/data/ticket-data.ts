@@ -13,7 +13,8 @@ export interface TicketType {
     reduced: boolean,
     category: TicketCategory,
     minutesOfValidity: number,
-    daysOfValidity: number
+    daysOfValidity: number,
+    displayName: string
 }
 
 export interface TicketCategory {
