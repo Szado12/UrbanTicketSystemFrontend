@@ -9,7 +9,7 @@
       <span>{{(ticketData.type.price/100).toFixed(2)}} PLN</span>
     </div>
   </div>
-  <div class="card cardRight" [ngClass]="{'redRight':ticketData.type.category.id ==  1, 'greenRight': ticketData.type.category.id ==  2, 'blueRight':ticketData.type.category.id ==  3}">
+  <div class="card cardRight center" [ngClass]="{'redRight':ticketData.type.category.id ==  1, 'greenRight': ticketData.type.category.id ==  2, 'blueRight':ticketData.type.category.id ==  3}">
     <div class="bus-icon"><fa-icon [icon]="faInfo" (click)="getTicketDetails()" matTooltip matTooltip="More details"></fa-icon></div>
       <qrcode [qrdata]="ticketData.id.toString()" [width]="100" [errorCorrectionLevel]="'M'"></qrcode>
       <span class="text">{{ticketData.id.toString().repeat(6)}}</span>
