@@ -37,6 +37,7 @@ import { SuccessfulBuyComponent } from './tickets/buy-ticket/ticket-cart/success
 import { AddToCartPopupComponent } from './tickets/buy-ticket/ticket-list/add-to-cart-popup/add-to-cart-popup.component';
 import { ScanTicketComponent } from './scan-ticket/scan-ticket.component';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
 	declarations: [
@@ -75,7 +76,9 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
 		FlexLayoutModule,
 		SocialLoginModule,
 		FontAwesomeModule,
-		MatTooltipModule ],
+		MatTooltipModule,
+		QRCodeModule
+		 ],
 	providers: [ { provide: 'BASE_API_URL', useValue: 'http://localhost:8080' },
 				 {
 					 provide: 'SocialAuthServiceConfig',
