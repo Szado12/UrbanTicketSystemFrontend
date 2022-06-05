@@ -34,6 +34,7 @@ import { TicketCartComponent } from './tickets/buy-ticket/ticket-cart/ticket-car
 import { CartRowComponent } from './tickets/buy-ticket/ticket-cart/cart-row/cart-row.component';
 import { ClientSingleTicketComponent } from './client/client-tickets/client-single-ticket/client-single-ticket.component';
 import { SuccessfulBuyComponent } from './tickets/buy-ticket/ticket-cart/successful-buy/successful-buy.component';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
 	declarations: [
@@ -69,7 +70,9 @@ import { SuccessfulBuyComponent } from './tickets/buy-ticket/ticket-cart/success
 		FlexLayoutModule,
 		SocialLoginModule,
 		FontAwesomeModule,
-		MatTooltipModule ],
+		MatTooltipModule,
+		QRCodeModule
+		 ],
 	providers: [ { provide: 'BASE_API_URL', useValue: 'http://localhost:8080' },
 				 {
 					 provide: 'SocialAuthServiceConfig',
