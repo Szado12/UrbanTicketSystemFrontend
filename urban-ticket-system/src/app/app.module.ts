@@ -38,6 +38,7 @@ import { AddToCartPopupComponent } from './tickets/buy-ticket/ticket-list/add-to
 import { ScanTicketComponent } from './scan-ticket/scan-ticket.component';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { QRCodeModule } from 'angularx-qrcode';
+import { PopupTicketValidationComponent } from './scan-ticket/popup-ticket-validation/popup-ticket-validation.component';
 
 @NgModule({
 	declarations: [
@@ -62,6 +63,7 @@ import { QRCodeModule } from 'angularx-qrcode';
   SuccessfulBuyComponent,
   AddToCartPopupComponent,
   ScanTicketComponent,
+  PopupTicketValidationComponent,
 	],
 	imports: [ 
 		BrowserAnimationsModule,

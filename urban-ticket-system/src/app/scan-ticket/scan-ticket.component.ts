@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { PostScanTicket } from './data/post-scan-ticket';
+import { PopupTicketValidationComponent } from './popup-ticket-validation/popup-ticket-validation.component';
+import { ScanTicketService } from './services/scan-ticket.service';
 
 @Component({
   selector: 'app-scan-ticket',
@@ -7,11 +11,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScanTicketComponent implements OnInit {
 
-  constructor() { }
+  constructor(private scanTicketService:ScanTicketService, public dialog: MatDialog) { }
 
   availableDevices: MediaDeviceInfo[] = [];
   ticketCode:string = "";
   selectedDevice: MediaDeviceInfo;
+  buses = ["234","435435","432532","KL324234"];
+  selectedBus = this.buses[0];
 
   ngOnInit(): void {
     this.loadAvailableCameras();
@@ -37,4 +43,15 @@ export class ScanTicketComponent implements OnInit {
     });
   }
 
+  scanTicket(){
+    if(this.ticketCode == "")
+      console.log("wypełnij dane");
+    else
+    this.scanTicketService.scanTicket({ticketCode:this.ticketCode, busNumber:this.selectedBus} as PostScanTicket)
+    .subscribe(res => 
+      {
+        var dialogRef = this.dialog.open(PopupTicketValidationComponent,{data : res});
+      });
+    var dialogRef = this.dialog.open(PopupTicketValidationComponent);
+  }
 }

@@ -1,7 +1,16 @@
 <div class="container">
     <div class="row"><h1>Scan your ticket</h1></div>
     <hr/>
-    Select bus number:
+    <div class="row">
+        <div class="col-3">Select bus number:</div>
+        <div class="col-3">
+        <select class="form-select" [(ngModel)]="selectedBus">
+            <option *ngFor="let bus of buses" [ngValue]="bus">
+                {{bus}}
+            </option>
+        </select>
+        </div>
+    </div>
     <hr/>
     <div class="row">
         <div class = "col-2">Enter ticket code:</div>
@@ -9,11 +18,11 @@
             <input class="form-control"  [(ngModel)] = "ticketCode"> 
         </div>
     </div>
-    
+    <button class="btn btn-primary" (click)="scanTicket()">Scan ticket</button>    
     <hr/>
     Scan your ticket:
     <div class="scanner-preview">
-        <select class="form-select" id="ticketType" [(ngModel)]="selectedDevice">
+        <select class="form-select" [(ngModel)]="selectedDevice">
             <option *ngFor="let device of availableDevices" [ngValue]="device">
                 {{device.label}}
             </option>
