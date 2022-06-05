@@ -22,8 +22,10 @@ export class CartRowComponent implements OnInit {
   }
 
   decreaseValue(){
-    this.ticket[1] = this.ticket[1] - 1;
-    this.valueChangedEventEmit();
+    if(this.ticket[1] > 0){
+      this.ticket[1] = this.ticket[1] - 1;
+      this.valueChangedEventEmit();
+    }
   }
   increaseValue(){
     this.ticket[1] = this.ticket[1] + 1;

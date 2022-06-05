@@ -34,6 +34,9 @@ import { TicketCartComponent } from './tickets/buy-ticket/ticket-cart/ticket-car
 import { CartRowComponent } from './tickets/buy-ticket/ticket-cart/cart-row/cart-row.component';
 import { ClientSingleTicketComponent } from './client/client-tickets/client-single-ticket/client-single-ticket.component';
 import { SuccessfulBuyComponent } from './tickets/buy-ticket/ticket-cart/successful-buy/successful-buy.component';
+import { AddToCartPopupComponent } from './tickets/buy-ticket/ticket-list/add-to-cart-popup/add-to-cart-popup.component';
+import { ScanTicketComponent } from './scan-ticket/scan-ticket.component';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 @NgModule({
 	declarations: [
@@ -56,9 +59,12 @@ import { SuccessfulBuyComponent } from './tickets/buy-ticket/ticket-cart/success
   EditClientPasswordDialogComponent,
   ClientSingleTicketComponent,
   SuccessfulBuyComponent,
+  AddToCartPopupComponent,
+  ScanTicketComponent,
 	],
 	imports: [ 
 		BrowserAnimationsModule,
+		ZXingScannerModule,
 		MatDialogModule,
 		BrowserModule,
 		AppRoutingModule,

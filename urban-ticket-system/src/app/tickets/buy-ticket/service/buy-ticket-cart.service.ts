@@ -55,6 +55,13 @@ export class BuyTicketCartService {
     }
   }
 
+  getNumberOfTicketsInCart():number{
+    var num = 0;
+    this.cartTickets.forEach((value: number, key: number) => {
+      num += value;
+  });
+    return num;
+  }
   
   clearAll(){
     this.cartTickets.clear();

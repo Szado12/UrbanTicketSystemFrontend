@@ -15,7 +15,7 @@
                         <a class="nav-link active" aria-current="page" href="/client">My profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/ticket-cart"><fa-icon [icon]="faShoppingCart"></fa-icon></a>
+                        <a class="nav-link active" aria-current="page" href="/ticket-cart"><fa-icon [icon]="faShoppingCart"></fa-icon><div class="numItems">{{buyTicketCart.getNumberOfTicketsInCart()}}</div></a>
                     </li>
                     <li class="nav-item" (click)="authService.logout()">
                         <a class="nav-link active" aria-current="page" href="/auth">Log out</a>

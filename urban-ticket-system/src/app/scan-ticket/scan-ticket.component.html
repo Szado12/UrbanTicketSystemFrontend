@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row"><h1>Scan your ticket</h1></div>
+    <hr/>
+    Select bus number:
+    <hr/>
+    <div class="row">
+        <div class = "col-2">Enter ticket code:</div>
+        <div class = "col-4">
+            <input class="form-control"  [(ngModel)] = "ticketCode"> 
+        </div>
+    </div>
+    
+    <hr/>
+    Scan your ticket:
+    <div class="scanner-preview">
+        <select class="form-select" id="ticketType" [(ngModel)]="selectedDevice">
+            <option *ngFor="let device of availableDevices" [ngValue]="device">
+                {{device.label}}
+            </option>
+          </select>
+        <zxing-scanner (scanSuccess)="scanSuccessHandler($event)"  [(device)]="selectedDevice" ></zxing-scanner>
+    </div>
+</div>

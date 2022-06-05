@@ -37,16 +37,11 @@ export class TicketCartComponent implements OnInit {
   }
 
   buyTickets(){
-    console.log(this.displayTickets.length);
     this.ticketDataService.postTicketsToBuy(this.mapMaptoPostBuyMultipleTickets(this.ticketsInCart)).subscribe(
       result => {
         this.buyTicketCart.clearAll();
         this.filterOutCartTickets();
         const dialogRef = this.dialog.open(SuccessfulBuyComponent);
-
-        dialogRef.afterClosed().subscribe(result => {
-          console.log(result);
-    });
       },
       error => {
           console.log(error)
@@ -76,5 +71,12 @@ export class TicketCartComponent implements OnInit {
   changeValue(ticket:any){
     this.buyTicketCart.changeValue(ticket[0].id,ticket[1]);
     this.filterOutCartTickets();
+  }
+  getTotalPrice():number{
+    var num = 0;
+    this.displayTickets.forEach(value => {
+      num += value[0].price * value[1];
+    });
+    return num;
   }
 }
