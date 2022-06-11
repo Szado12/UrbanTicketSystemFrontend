@@ -37,7 +37,6 @@ export class TicketCartComponent implements OnInit {
   }
 
   buyTickets(){
-    console.log(this.displayTickets.length);
     this.ticketDataService.postTicketsToBuy(this.mapMaptoPostBuyMultipleTickets(this.ticketsInCart)).subscribe(
       result => {
         this.buyTicketCart.clearAll();
@@ -45,11 +44,9 @@ export class TicketCartComponent implements OnInit {
         const dialogRef = this.dialog.open(SuccessfulBuyComponent);
 
         dialogRef.afterClosed().subscribe(result => {
-          console.log(result);
     });
       },
       error => {
-          console.log(error)
       }
   ); 
   }

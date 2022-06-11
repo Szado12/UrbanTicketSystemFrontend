@@ -37,6 +37,7 @@ import { SuccessfulBuyComponent } from './tickets/buy-ticket/ticket-cart/success
 import { QRCodeModule } from 'angularx-qrcode';
 import { EditInspectorDataDialogComponent } from './ticket-inspector/edit-inspector-data-dialog/edit-inspector-data-dialog.component';
 import { EditInspectorPasswordDialogComponent } from './ticket-inspector/edit-inspector-password-dialog/edit-inspector-password-dialog.component';
+import { FireworksComponent } from './ticket-inspector/fireworks/fireworks.component';
 
 @NgModule({
 	declarations: [
@@ -61,6 +62,7 @@ import { EditInspectorPasswordDialogComponent } from './ticket-inspector/edit-in
   SuccessfulBuyComponent,
   EditInspectorDataDialogComponent,
   EditInspectorPasswordDialogComponent,
+  FireworksComponent,
 	],
 	imports: [ 
 		BrowserAnimationsModule,
