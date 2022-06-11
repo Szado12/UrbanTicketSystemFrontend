@@ -7,7 +7,7 @@
 <div class="md-3" *ngFor="let ticket of displayTickets">
     <app-cart-row [ticket]="ticket" (removeItemEvent)="removeItem($event)" (valueChangedEvent)="changeValue($event)"></app-cart-row>
 </div>
-<div>
+<div [fxShow] ="buyTicketCart.getNumberOfTicketsInCart() > 0">
     <div class="row">
         <div class="col-8">
             Sum: 

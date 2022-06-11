@@ -16,7 +16,7 @@ export class TicketCartComponent implements OnInit {
   ticketTypes : TicketType[] = [];
   ticketsInCart : Map<number,number> = new Map<number,number>();
   displayTickets : [TicketType,number][] = [];
-  constructor(private buyTicketCart : BuyTicketCartService,private ticketDataService: TicketDataService,public dialog: MatDialog) { }
+  constructor(public buyTicketCart : BuyTicketCartService,private ticketDataService: TicketDataService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     

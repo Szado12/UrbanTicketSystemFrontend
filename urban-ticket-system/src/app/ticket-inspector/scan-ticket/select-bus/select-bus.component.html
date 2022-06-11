@@ -1,0 +1,15 @@
+<div>
+<h2 mat-dialog-title>Select bus number:</h2>
+
+  <input class="form-select" type="text"
+          placeholder="Search for a bus number"
+          [(ngModel)]= "selectedBus"
+          [formControl]="control"
+          (ngModelChange) = "emitSelectedBus()"
+          [matAutocomplete]="auto">
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+    <mat-option *ngFor="let bus of filteredBuses | async" [value]="bus">
+      {{bus.busNumber}}
+    </mat-option>
+  </mat-autocomplete>
+</div>

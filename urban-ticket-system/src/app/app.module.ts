@@ -35,12 +35,15 @@ import { CartRowComponent } from './tickets/buy-ticket/ticket-cart/cart-row/cart
 import { ClientSingleTicketComponent } from './client/client-tickets/client-single-ticket/client-single-ticket.component';
 import { SuccessfulBuyComponent } from './tickets/buy-ticket/ticket-cart/successful-buy/successful-buy.component';
 import { AddToCartPopupComponent } from './tickets/buy-ticket/ticket-list/add-to-cart-popup/add-to-cart-popup.component';
-import { ScanTicketComponent } from './scan-ticket/scan-ticket.component';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { QRCodeModule } from 'angularx-qrcode';
 import { EditInspectorDataDialogComponent } from './ticket-inspector/edit-inspector-data-dialog/edit-inspector-data-dialog.component';
 import { EditInspectorPasswordDialogComponent } from './ticket-inspector/edit-inspector-password-dialog/edit-inspector-password-dialog.component';
-import { PopupTicketValidationComponent } from './scan-ticket/popup-ticket-validation/popup-ticket-validation.component';
+import { ScanTicketComponent } from './ticket-inspector/scan-ticket/scan-ticket.component';
+import { PopupTicketValidationComponent } from './ticket-inspector/scan-ticket/popup-ticket-validation/popup-ticket-validation.component';
+import { SelectBusComponent } from './ticket-inspector/scan-ticket/select-bus/select-bus.component';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { QrCodeScannerComponent } from './ticket-inspector/scan-ticket/qr-code-scanner/qr-code-scanner.component';
 
 @NgModule({
 	declarations: [
@@ -68,9 +71,12 @@ import { PopupTicketValidationComponent } from './scan-ticket/popup-ticket-valid
   PopupTicketValidationComponent,
   EditInspectorDataDialogComponent,
   EditInspectorPasswordDialogComponent,
+  SelectBusComponent,
+  QrCodeScannerComponent
 	],
 	imports: [ 
 		BrowserAnimationsModule,
+		MatAutocompleteModule,
 		ZXingScannerModule,
 		MatDialogModule,
 		BrowserModule,

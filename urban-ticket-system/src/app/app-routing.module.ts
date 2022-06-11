@@ -6,7 +6,7 @@ import { ClientRegisterComponent } from './auth/client-register/client-register.
 import { InspectorLoginComponent } from './auth/inspector-login/inspector-login.component';
 import { AuthGuard } from './auth/service/auth.guard';
 import { ClientComponent } from './client/client.component';
-import { ScanTicketComponent } from './scan-ticket/scan-ticket.component';
+import { ScanTicketComponent } from './ticket-inspector/scan-ticket/scan-ticket.component';
 import { TicketInspectorComponent } from './ticket-inspector/ticket-inspector.component';
 import { BuyTicketComponent } from './tickets/buy-ticket/buy-ticket.component';
 import { TicketCartComponent } from './tickets/buy-ticket/ticket-cart/ticket-cart.component';
@@ -65,7 +65,11 @@ const routes: Routes = [
     component: TicketCartComponent,
   },
   {
-    path: 'scan-ticket',
+    path: 'validate-ticket',
+    canActivate: [ AuthGuard ],    
+    data: {
+      role: 'STAFF'
+    },
     component: ScanTicketComponent,
   },
 ];

@@ -22,7 +22,7 @@ export class CartRowComponent implements OnInit {
   }
 
   decreaseValue(){
-    if(this.ticket[1] > 0){
+    if(this.ticket[1] > 1){
       this.ticket[1] = this.ticket[1] - 1;
       this.valueChangedEventEmit();
     }
