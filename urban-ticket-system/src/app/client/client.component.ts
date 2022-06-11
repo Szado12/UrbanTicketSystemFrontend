@@ -5,10 +5,11 @@ import { faEdit, faLock, faThumbsDown } from '@fortawesome/free-solid-svg-icons'
 import { MatDialog } from '@angular/material/dialog';
 import { EditClientDataDialogComponent } from './edit-client-data-dialog/edit-client-data-dialog.component';
 import { EditClientPasswordDialogComponent } from './edit-client-password-dialog/edit-client-password-dialog.component';
-import { TicketCategory, TicketData, TicketType } from './data/ticket-data';
+import { TicketCategory, TicketData, TicketType, TicketStatus } from './data/ticket-data';
 import * as moment from 'moment';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { RoleService } from '../auth/service/role.service';
 
 @Component({
   selector: 'app-client',
@@ -28,6 +29,7 @@ export class ClientComponent implements OnInit {
 
   constructor(
     private clientDataService: ClientDataService,
+    public roleService: RoleService,
     public dialog: MatDialog
   ) { }
 
@@ -48,16 +50,24 @@ export class ClientComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-    });
+        this.clientDataService.changeUserData({name: result.name, surname: result.surname})
+        .subscribe(res => {
+          if(res) {
+            this.data.name = result.name;
+            this.data.surname = result.surname
+          }
+        });
+    },
+    (error) => {});
   }
 
   changePassword() {
     const dialogRef = this.dialog.open(EditClientPasswordDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-    });
+      this.clientDataService.changePasswordData(result);
+    },
+    (error) => {});
   }
 
   updateTickets(id: number) {
@@ -65,15 +75,15 @@ export class ClientComponent implements OnInit {
     switch (id) {
       case 1:
         this.userTickets = this.allTickets
-          .filter(t => t.validatedInBus == 0)
+          .filter(t => t.status == TicketStatus.BOUGHT)
         break;
       case 2:
         this.userTickets = this.allTickets
-          .filter(t => t.validatedInBus == 1 && moment() <= moment(t.validatedTime).add(t.type.minutesOfValidity, 'm').add(t.type.daysOfValidity, 'd'))
+          .filter(t => t.status == TicketStatus.VALID && moment() <= moment(t.validatedTime).add(t.type.minutesOfValidity, 'm').add(t.type.daysOfValidity, 'd'))
         break;
       case 3:
         this.userTickets = this.allTickets
-          .filter(t => t.validatedInBus == 1 && moment() > moment(t.validatedTime).add(t.type.minutesOfValidity, 'm').add(t.type.daysOfValidity, 'd'))
+          .filter(t => t.status == TicketStatus.INVALID && moment() > moment(t.validatedTime).add(t.type.minutesOfValidity, 'm').add(t.type.daysOfValidity, 'd'))
         break;
     }
   }

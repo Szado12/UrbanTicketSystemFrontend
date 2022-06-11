@@ -22,3 +22,13 @@ body{
 app-root{
     height: 100%;
 }
+
+.full-width {
+    width:100%;
+}
+
+@media (min-width: 993px) {
+    .left-align {
+        margin-left: auto;
+    }
+}

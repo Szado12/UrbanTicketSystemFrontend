@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { ClientData } from '../data/client-data';
-import { ClientNameData } from '../data/client-name-data';
+import { TicketInspectorData } from '../data/ticket-inspector-data';
 
 const profileUrl = '/profile';
 const changeDataUrl = '/change-data';
@@ -11,17 +10,17 @@ const changePasswordUrl = '/change-password';
 @Injectable({
   providedIn: 'root'
 })
-export class ClientDataService {
+export class InspectorDataService {
 
   constructor(
     private readonly http: HttpClient, 
 		@Inject('BASE_API_URL') private baseUrl: string) { }
 
-  getUserData(): Observable<ClientData> {
-		return this.http.get<ClientData>(this.baseUrl + profileUrl);
+  getUserData(): Observable<TicketInspectorData> {
+		return this.http.get<TicketInspectorData>(this.baseUrl + profileUrl);
   }
 
-  changeUserData(data: ClientNameData): Observable<boolean> {
+  changeUserData(data: TicketInspectorData): Observable<boolean> {
 		return this.http.put<boolean>(this.baseUrl + changeDataUrl, data);
   }
 
