@@ -3,7 +3,7 @@ export interface TicketData {
     boughtTime: Date,
     validatedTime: Date,
     validatedInBus: number,
-    status: string,
+    status: TicketStatus,
     type: TicketType
 }
 
@@ -22,4 +22,9 @@ export interface TicketCategory {
     name: string
 }
 
+export enum TicketStatus {
+    BOUGHT = 'BOUGHT',
+    VALID = 'VALID',
+    INVALID = 'INVALID'
+}
 

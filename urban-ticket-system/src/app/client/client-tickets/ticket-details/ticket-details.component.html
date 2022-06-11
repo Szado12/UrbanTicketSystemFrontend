@@ -1,4 +1,9 @@
-<h2 mat-dialog-title>Ticket details</h2>
+<div mat-dialog-title fxLayout="row">
+  <h3 fxFlex="80">Ticket details</h3>
+  <div fxFlex="20" fxLayoutAlign="end">
+    <fa-icon [icon]="faX" mat-dialog-close></fa-icon>
+  </div>
+</div>
 <mat-dialog-content class="mat-typography">
 
     <div *ngFor="let detail of details">
@@ -12,13 +17,7 @@
           </div>
       </div>
     </div>
-
+    <div fxLayoutAlign="center center">
+      <qrcode [qrdata]="data.id.toString()" [width]="200" [errorCorrectionLevel]="'M'"></qrcode>
+    </div>
 </mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button 
-    mat-raised-button 
-    class="btn btn-primary" 
-    mat-dialog-close>
-    OK
-  </button>
-</mat-dialog-actions>
