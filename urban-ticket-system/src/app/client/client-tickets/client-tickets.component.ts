@@ -18,7 +18,6 @@ export class ClientTicketsComponent implements OnInit {
 
   @Input() set userTickets(value: TicketData[]) {
     if(value){
-      console.log(value)
       this.ticketsLoaded = true;
       this.ticketsList = value;
       this.updateLoading();
