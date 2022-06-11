@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientData } from './data/client-data';
 import { ClientDataService } from './service/client-data.service';
-import { faEdit, faLock, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faLock, faSpinner, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { MatDialog } from '@angular/material/dialog';
 import { EditClientDataDialogComponent } from './edit-client-data-dialog/edit-client-data-dialog.component';
 import { EditClientPasswordDialogComponent } from './edit-client-password-dialog/edit-client-password-dialog.component';
@@ -20,7 +20,7 @@ export class ClientComponent implements OnInit {
   data!: ClientData; 
   faEdit = faEdit
   faLock = faLock
-
+  faSpinner = faSpinner;
   allTickets: TicketData[];
   userTickets: TicketData[];
   loaded: boolean = false;

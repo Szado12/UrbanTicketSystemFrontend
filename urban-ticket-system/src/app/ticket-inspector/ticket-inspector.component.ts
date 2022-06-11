@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TicketInspectorData } from './data/ticket-inspector-data';
 import { InspectorDataService } from './service/inspector-data.service';
-import { faEdit, faLock, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faLock, faSpinner, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { EditInspectorDataDialogComponent } from './edit-inspector-data-dialog/edit-inspector-data-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { EditInspectorPasswordDialogComponent } from './edit-inspector-password-dialog/edit-inspector-password-dialog.component';
@@ -15,6 +15,7 @@ export class TicketInspectorComponent implements OnInit {
   data!: TicketInspectorData; 
   faEdit = faEdit
   faLock = faLock
+  faSpinner = faSpinner
   loaded: boolean = false;
 
   constructor(
