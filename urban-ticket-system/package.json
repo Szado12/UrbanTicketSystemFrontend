@@ -27,6 +27,7 @@
     "@fortawesome/free-brands-svg-icons": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
+    "@zxing/ngx-scanner": "^3.5.0",
     "angularx-qrcode": "^13.0.15",
     "angularx-social-login": "^4.1.0",
     "bootstrap": "^5.1.3",

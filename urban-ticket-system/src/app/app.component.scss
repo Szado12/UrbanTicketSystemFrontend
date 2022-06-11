@@ -22,6 +22,18 @@ body{
 app-root{
     height: 100%;
 }
+.numItems{
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    margin-top: -10px;
+    margin-left: 15px;
+    text-align: center;
+    font-size: 0.7em;
+    border-radius: 50%;
+    background-color: #fff;
+    color:#0d6efd;
+}
 
 .full-width {
     width:100%;

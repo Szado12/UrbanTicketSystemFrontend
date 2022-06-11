@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row"><h1>Scan your ticket</h1></div>
+    <hr/>
+    <div class="row">
+        <app-select-bus [listOfBuses] = "popupTicketValidationComponent" (selectedBusEvent) = "updateSelectedBus($event)"></app-select-bus>
+    </div>
+    <hr/>
+    <div class="row">
+        <div class = "col-2">Enter ticket code:</div>
+        <div class = "col-4">
+            <input class="form-control"  [(ngModel)] = "ticketCode"> 
+        </div>
+        <div class = "col-3">
+            <button class="btn btn-primary" (click)="openQRScanner()">Use QR scanner</button>
+        </div>
+    </div>
+    <button class="btn btn-primary" (click)="scanTicket()">Scan ticket</button>
+</div>

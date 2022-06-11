@@ -16,7 +16,7 @@ export class TicketCartComponent implements OnInit {
   ticketTypes : TicketType[] = [];
   ticketsInCart : Map<number,number> = new Map<number,number>();
   displayTickets : [TicketType,number][] = [];
-  constructor(private buyTicketCart : BuyTicketCartService,private ticketDataService: TicketDataService,public dialog: MatDialog) { }
+  constructor(public buyTicketCart : BuyTicketCartService,private ticketDataService: TicketDataService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
     
@@ -42,9 +42,6 @@ export class TicketCartComponent implements OnInit {
         this.buyTicketCart.clearAll();
         this.filterOutCartTickets();
         const dialogRef = this.dialog.open(SuccessfulBuyComponent);
-
-        dialogRef.afterClosed().subscribe(result => {
-    });
       },
       error => {
       }
@@ -73,5 +70,12 @@ export class TicketCartComponent implements OnInit {
   changeValue(ticket:any){
     this.buyTicketCart.changeValue(ticket[0].id,ticket[1]);
     this.filterOutCartTickets();
+  }
+  getTotalPrice():number{
+    var num = 0;
+    this.displayTickets.forEach(value => {
+      num += value[0].price * value[1];
+    });
+    return num;
   }
 }
