@@ -44,6 +44,7 @@ import { PopupTicketValidationComponent } from './ticket-inspector/scan-ticket/p
 import { SelectBusComponent } from './ticket-inspector/scan-ticket/select-bus/select-bus.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { QrCodeScannerComponent } from './ticket-inspector/scan-ticket/qr-code-scanner/qr-code-scanner.component';
+import { FireworksComponent } from './ticket-inspector/fireworks/fireworks.component';
 
 @NgModule({
 	declarations: [
@@ -72,7 +73,8 @@ import { QrCodeScannerComponent } from './ticket-inspector/scan-ticket/qr-code-s
   EditInspectorDataDialogComponent,
   EditInspectorPasswordDialogComponent,
   SelectBusComponent,
-  QrCodeScannerComponent
+  QrCodeScannerComponent,
+  FireworksComponent,
 	],
 	imports: [ 
 		BrowserAnimationsModule,

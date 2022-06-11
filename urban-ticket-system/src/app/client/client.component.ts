@@ -36,7 +36,6 @@ export class ClientComponent implements OnInit {
   ngOnInit(): void {
     this.clientDataService.getUserData()
       .subscribe(value => {
-        console.log(value);
         this.data = value;
         this.loaded = true;
         this.allTickets = this.data.tickets;

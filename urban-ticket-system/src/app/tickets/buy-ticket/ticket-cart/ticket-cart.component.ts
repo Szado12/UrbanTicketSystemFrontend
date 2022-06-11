@@ -44,7 +44,6 @@ export class TicketCartComponent implements OnInit {
         const dialogRef = this.dialog.open(SuccessfulBuyComponent);
       },
       error => {
-          console.log(error)
       }
   ); 
   }
