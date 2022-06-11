@@ -6,7 +6,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div [fxShow]="roleService.getRole() == 'CLIENT' || roleService.getRole() == 'OAUTH_CLIENT'">
+            <div class="full-width" [fxShow]="roleService.getRole() == 'CLIENT' || roleService.getRole() == 'OAUTH_CLIENT'">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="buy-ticket">Buy a ticket</a>
@@ -17,23 +17,20 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/ticket-cart"><fa-icon [icon]="faShoppingCart"></fa-icon><div class="numItems">{{buyTicketCart.getNumberOfTicketsInCart()}}</div></a>
                     </li>
-                    <li class="nav-item" (click)="authService.logout()">
+                    <li ngClass.gt-sm="left-align" class="nav-item" (click)="authService.logout()">
                         <a class="nav-link active" aria-current="page" href="/auth">Log out</a>
                     </li>
                 </ul>
             </div>
-            <div [fxShow]="roleService.getRole() == 'STAFF'">
+            <div class="full-width" [fxShow]="roleService.getRole() == 'STAFF'">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Scan a ticket</a>
+                        <a class="nav-link active" aria-current="page" href="/scan-ticket">Scan a ticket</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">History of scanning</a>
+                        <a class="nav-link active" aria-current="page" href="/inspector">My profile</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">My profile</a>
-                    </li>
-                    <li class="nav-item" (click)="authService.logout()">
+                    <li ngClass.gt-sm="left-align" class="nav-item" (click)="authService.logout()">
                         <a class="nav-link active" aria-current="page" href="/auth">Log out</a>
                     </li>
                 </ul>

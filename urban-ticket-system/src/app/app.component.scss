@@ -34,3 +34,14 @@ app-root{
     background-color: #fff;
     color:#0d6efd;
 }
+}
+
+.full-width {
+    width:100%;
+}
+
+@media (min-width: 993px) {
+    .left-align {
+        margin-left: auto;
+    }
+}

@@ -3,6 +3,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import * as moment from 'moment';
 import { ClientData } from '../../data/client-data';
 import { TicketData } from '../../data/ticket-data';
+import { faX } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-ticket-details',
@@ -10,6 +11,7 @@ import { TicketData } from '../../data/ticket-data';
   styleUrls: ['./ticket-details.component.scss']
 })
 export class TicketDetailsComponent implements OnInit {
+  faX = faX
   details = [
     {title: 'Bought Time', selector: moment(this.data.boughtTime).format('YYYY-MM-DD HH:mm:ss')},
     this.data.validatedInBus ? {title: 'Validated Time', selector: moment(this.data.validatedTime).format('YYYY-MM-DD HH:mm:ss')} : null,

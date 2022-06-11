@@ -38,6 +38,8 @@ import { AddToCartPopupComponent } from './tickets/buy-ticket/ticket-list/add-to
 import { ScanTicketComponent } from './scan-ticket/scan-ticket.component';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { QRCodeModule } from 'angularx-qrcode';
+import { EditInspectorDataDialogComponent } from './ticket-inspector/edit-inspector-data-dialog/edit-inspector-data-dialog.component';
+import { EditInspectorPasswordDialogComponent } from './ticket-inspector/edit-inspector-password-dialog/edit-inspector-password-dialog.component';
 import { PopupTicketValidationComponent } from './scan-ticket/popup-ticket-validation/popup-ticket-validation.component';
 
 @NgModule({
@@ -64,6 +66,8 @@ import { PopupTicketValidationComponent } from './scan-ticket/popup-ticket-valid
   AddToCartPopupComponent,
   ScanTicketComponent,
   PopupTicketValidationComponent,
+  EditInspectorDataDialogComponent,
+  EditInspectorPasswordDialogComponent,
 	],
 	imports: [ 
 		BrowserAnimationsModule,

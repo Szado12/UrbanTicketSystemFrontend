@@ -10,7 +10,6 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 })
 export class ClientTicketsComponent implements OnInit {
   constructor(public dialog: MatDialog){}
-  faSpinner = faSpinner;
   allLoaded = false;
   dataLoaded = false;
   ticketsLoaded = false;
