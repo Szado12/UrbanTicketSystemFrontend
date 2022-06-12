@@ -12,6 +12,7 @@ describe('BuyTicketCartService', () => {
   }
   let ticketTypeA:TicketType = {
     id: 1,
+    displayName:"",
     price: 20,
     reduced: false,
     category: category,
@@ -20,6 +21,7 @@ describe('BuyTicketCartService', () => {
   }
   let ticketTypeB:TicketType = {
     id: 2,
+    displayName:"",
     price: 30,
     reduced: true,
     category: category,

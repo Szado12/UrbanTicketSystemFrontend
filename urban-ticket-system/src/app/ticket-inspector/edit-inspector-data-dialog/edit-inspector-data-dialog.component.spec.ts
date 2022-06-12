@@ -19,7 +19,4 @@ describe('EditInspectorDataDialogComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });

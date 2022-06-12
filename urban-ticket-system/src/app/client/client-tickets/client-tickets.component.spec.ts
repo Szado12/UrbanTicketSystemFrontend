@@ -19,7 +19,4 @@ describe('ClientTicketsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });

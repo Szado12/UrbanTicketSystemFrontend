@@ -19,7 +19,4 @@ describe('EditInspectorPasswordDialogComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });
