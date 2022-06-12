@@ -64,7 +64,7 @@ export class ClientComponent implements OnInit {
     const dialogRef = this.dialog.open(EditClientPasswordDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      this.clientDataService.changePasswordData(result);
+      this.clientDataService.changePasswordData(result).subscribe();
     },
     (error) => {});
   }

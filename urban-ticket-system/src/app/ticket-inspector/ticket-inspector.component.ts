@@ -52,7 +52,7 @@ export class TicketInspectorComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result: string) => {
-      this.inspectorDataService.changePasswordData(result)
+      this.inspectorDataService.changePasswordData(result).subscribe()
     });
   }
 }

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { HashingService } from 'src/app/auth/service/hashing.service';
 import { ClientData } from '../data/client-data';
 import { ClientNameData, ClientPassword } from '../data/client-name-data';
 
@@ -15,6 +16,7 @@ export class ClientDataService {
 
   constructor(
     private readonly http: HttpClient, 
+    private readonly hashingService: HashingService,
 		@Inject('BASE_API_URL') private baseUrl: string) { }
 
   getUserData(): Observable<ClientData> {
@@ -26,6 +28,7 @@ export class ClientDataService {
   }
 
   changePasswordData(password: string): Observable<boolean> {
-		return this.http.put<boolean>(this.baseUrl + changePasswordUrl, {password: password} as ClientPassword);
+    var data = {password: this.hashingService.hashString(password)};
+		return this.http.put<boolean>(this.baseUrl + changePasswordUrl, data);
   }
 }
