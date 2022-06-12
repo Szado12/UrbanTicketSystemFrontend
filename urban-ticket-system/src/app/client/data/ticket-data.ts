@@ -1,5 +1,6 @@
 export interface TicketData {
     id: number,
+    uuid: string,
     boughtTime: Date,
     validatedTime: Date,
     validatedInBus: number,
