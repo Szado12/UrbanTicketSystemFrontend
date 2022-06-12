@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { BusListAndSelectedOne } from './data/bus-list-and-selected-one';
 import { GetBusNumber } from './data/get-bus-numbers';
 import { PostScanTicket } from './data/post-scan-ticket';
+import { PopupTicketErrorHandlerComponent } from './popup-ticket-error-handler/popup-ticket-error-handler.component';
 import { PopupTicketValidationComponent } from './popup-ticket-validation/popup-ticket-validation.component';
 import { QrCodeScannerComponent } from './qr-code-scanner/qr-code-scanner.component';
 import { ScanTicketService } from './services/scan-ticket.service';
@@ -43,11 +44,11 @@ export class ScanTicketComponent implements OnInit {
     if(this.ticketCode == "")
       console.log("wypełnij dane");
     else
-    this.scanTicketService.scanTicket({ticketCode:this.ticketCode, busId :this.selectedBus.id} as PostScanTicket)
+    this.scanTicketService.scanTicket({ticketUuid:this.ticketCode, validatedInBus :this.selectedBus.id} as PostScanTicket)
     .subscribe(res => 
       {
         this.dialog.open(PopupTicketValidationComponent,{data : res});
-      });
-    this.dialog.open(PopupTicketValidationComponent);
+      },
+      error => this.dialog.open(PopupTicketErrorHandlerComponent));
   }
 }

@@ -45,6 +45,7 @@ import { SelectBusComponent } from './ticket-inspector/scan-ticket/select-bus/se
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { QrCodeScannerComponent } from './ticket-inspector/scan-ticket/qr-code-scanner/qr-code-scanner.component';
 import { FireworksComponent } from './ticket-inspector/fireworks/fireworks.component';
+import { PopupTicketErrorHandlerComponent } from './ticket-inspector/scan-ticket/popup-ticket-error-handler/popup-ticket-error-handler.component';
 
 @NgModule({
 	declarations: [
@@ -75,6 +76,7 @@ import { FireworksComponent } from './ticket-inspector/fireworks/fireworks.compo
   SelectBusComponent,
   QrCodeScannerComponent,
   FireworksComponent,
+  PopupTicketErrorHandlerComponent,
 	],
 	imports: [ 
 		BrowserAnimationsModule,

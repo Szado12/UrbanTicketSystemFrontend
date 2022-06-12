@@ -1,5 +1,5 @@
 export interface PostScanTicket {
-    ticketCode: string;
-    busId: number;
+    ticketUuid: string;
+    validatedInBus: number;
   }
   
