@@ -2,7 +2,7 @@
     <div>
         <h1 class="inline"> {{data?.name}} {{data?.surname}} </h1>
         <fa-icon [icon]="faEdit" size="1x" (click)="changeData()" matTooltip matTooltip="Change your data"></fa-icon>
-        <fa-icon [fxShow]="roleService.getRole() == 'CLIENT'" [icon]="faLock" size="1x"  matTooltip matTooltip="Change your password"></fa-icon>
+        <fa-icon [fxShow]="roleService.getRole() == 'CLIENT'" (click)="changePassword()" [icon]="faLock" size="1x"  matTooltip matTooltip="Change your password"></fa-icon>
     </div>
     <hr style="width:100%">
 

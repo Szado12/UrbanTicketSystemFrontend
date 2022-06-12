@@ -4,8 +4,8 @@ import { Observable, of } from 'rxjs';
 import { TicketInspectorData } from '../data/ticket-inspector-data';
 
 const profileUrl = '/profile';
-const changeDataUrl = '/change-data';
-const changePasswordUrl = '/change-password';
+const changeDataUrl = '/profile/data';
+const changePasswordUrl = '/profile/password';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +25,6 @@ export class InspectorDataService {
   }
 
   changePasswordData(password: string): Observable<boolean> {
-		return this.http.put<boolean>(this.baseUrl + changePasswordUrl, password);
+		return this.http.put<boolean>(this.baseUrl + changePasswordUrl, {password: password});
   }
 }
