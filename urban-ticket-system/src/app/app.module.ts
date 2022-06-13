@@ -95,7 +95,7 @@ import { PopupTicketErrorHandlerComponent } from './ticket-inspector/scan-ticket
 		MatTooltipModule,
 		QRCodeModule
 		 ],
-	providers: [ { provide: 'BASE_API_URL', useValue: 'http://localhost:8080' },
+	providers: [ { provide: 'BASE_API_URL', useValue: 'https://urban-ticket-system-backend.herokuapp.com' },
 				 {
 					 provide: 'SocialAuthServiceConfig',
 					 useValue: {
