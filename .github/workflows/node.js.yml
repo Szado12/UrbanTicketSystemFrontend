@@ -26,9 +26,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
         cache-dependency-path: "./urban-ticket-system/package-lock.json"
-    - run: cd ./urban-ticket-system; npm install -force
-    - run: cd ./urban-ticket-system; npm install @zxing/library -force
-    - run: cd ./urban-ticket-system; npm install @zxing/browser -force
+    - run: cd ./urban-ticket-system; npm install
     - run: cd ./urban-ticket-system; npm ci
     - run: cd ./urban-ticket-system; npm run build --if-present
     - run: cd ./urban-ticket-system; npm test
