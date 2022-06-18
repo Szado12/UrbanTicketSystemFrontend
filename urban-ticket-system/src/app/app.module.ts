@@ -16,7 +16,7 @@ import {
   FacebookLoginProvider,
   SocialLoginModule,
   SocialAuthServiceConfig,
-} from 'angularx-social-login';
+} from '@abacritt/angularx-social-login';
 import { AuthInterceptor } from './auth/service/auth.interceptor';
 import { ClientTicketsComponent } from './client/client-tickets/client-tickets.component';
 import { TicketDetailsComponent } from './client/client-tickets/ticket-details/ticket-details.component';
@@ -35,7 +35,6 @@ import { CartRowComponent } from './tickets/buy-ticket/ticket-cart/cart-row/cart
 import { ClientSingleTicketComponent } from './client/client-tickets/client-single-ticket/client-single-ticket.component';
 import { SuccessfulBuyComponent } from './tickets/buy-ticket/ticket-cart/successful-buy/successful-buy.component';
 import { AddToCartPopupComponent } from './tickets/buy-ticket/ticket-list/add-to-cart-popup/add-to-cart-popup.component';
-import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { QRCodeModule } from 'angularx-qrcode';
 import { EditInspectorDataDialogComponent } from './ticket-inspector/edit-inspector-data-dialog/edit-inspector-data-dialog.component';
 import { EditInspectorPasswordDialogComponent } from './ticket-inspector/edit-inspector-password-dialog/edit-inspector-password-dialog.component';
@@ -81,7 +80,6 @@ import { PopupTicketErrorHandlerComponent } from './ticket-inspector/scan-ticket
 	imports: [ 
 		BrowserAnimationsModule,
 		MatAutocompleteModule,
-		ZXingScannerModule,
 		MatDialogModule,
 		BrowserModule,
 		AppRoutingModule,

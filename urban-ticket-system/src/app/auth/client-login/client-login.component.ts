@@ -7,7 +7,7 @@ import {
 	SocialAuthService,
 	FacebookLoginProvider,
 	SocialUser,
-} from 'angularx-social-login';
+} from '@abacritt/angularx-social-login';
 import { FacebookLoginData } from '../data/facebook-login-data';
 import { UserRole } from '../data/user-roles';
 import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons';
