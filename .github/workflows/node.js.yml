@@ -26,3 +26,9 @@ jobs:
       run: |
           npm install --save
           npm run gh-pages
+          
+    - name: publish
+      uses: JamesIves/github-pages-deploy-action@v4.3.3
+      with:
+        branch: gh-pages
+        folder: urban-ticket-system/dist/urban-ticket-system
