@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { QrCodeScannerComponent } from './qr-code-scanner.component';
 
@@ -8,7 +10,13 @@ describe('QrCodeScannerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ QrCodeScannerComponent ]
+      declarations: [ QrCodeScannerComponent ],
+      imports: [HttpClientTestingModule, MatDialogModule], 
+      providers: [
+      {provide: MatDialogRef, useValue: {}},
+      {provide: MAT_DIALOG_DATA, useValue: {}},
+      { provide: 'BASE_API_URL', useValue: 'https://urban-ticket-system-backend.herokuapp.com'  }
+    ]		
     })
     .compileComponents();
   });
@@ -19,4 +27,7 @@ describe('QrCodeScannerComponent', () => {
     fixture.detectChanges();
   });
 
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

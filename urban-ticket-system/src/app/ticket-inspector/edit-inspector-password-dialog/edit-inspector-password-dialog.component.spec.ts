@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
 import { EditInspectorPasswordDialogComponent } from './edit-inspector-password-dialog.component';
 
@@ -8,7 +9,13 @@ describe('EditInspectorPasswordDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EditInspectorPasswordDialogComponent ]
+      declarations: [ EditInspectorPasswordDialogComponent ],
+      imports: [MatDialogModule],
+      providers: [
+        {
+          provide: MatDialogRef,
+          useValue: {}
+        }]
     })
     .compileComponents();
   });
@@ -19,4 +26,7 @@ describe('EditInspectorPasswordDialogComponent', () => {
     fixture.detectChanges();
   });
 
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

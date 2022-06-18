@@ -1,4 +1,6 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { ClientTicketsComponent } from './client-tickets.component';
 
@@ -8,7 +10,13 @@ describe('ClientTicketsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ClientTicketsComponent ]
+      declarations: [ ClientTicketsComponent ],
+      imports: [HttpClientTestingModule, MatDialogModule], 
+      providers: [
+      {provide: MatDialogRef, useValue: {}},
+      {provide: MAT_DIALOG_DATA, useValue: {}},
+      { provide: 'BASE_API_URL', useValue: 'https://urban-ticket-system-backend.herokuapp.com'  }
+    ]	
     })
     .compileComponents();
   });
@@ -19,4 +27,7 @@ describe('ClientTicketsComponent', () => {
     fixture.detectChanges();
   });
 
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });
