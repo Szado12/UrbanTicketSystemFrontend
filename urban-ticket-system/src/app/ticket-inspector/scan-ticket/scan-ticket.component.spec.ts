@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ScanTicketComponent } from './scan-ticket.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 describe('ScanTicketComponent', () => {
   let component: ScanTicketComponent;
@@ -8,7 +9,9 @@ describe('ScanTicketComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ScanTicketComponent ]
+      declarations: [ ScanTicketComponent ],
+      imports: [HttpClientTestingModule, MatDialogModule], 
+      providers: [{ provide: 'BASE_API_URL', useValue: 'https://urban-ticket-system-backend.herokuapp.com'  }]		
     })
     .compileComponents();
   });
@@ -17,6 +20,10 @@ describe('ScanTicketComponent', () => {
     fixture = TestBed.createComponent(ScanTicketComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 
 });

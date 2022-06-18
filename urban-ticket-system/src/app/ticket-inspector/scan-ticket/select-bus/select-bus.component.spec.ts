@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatAutocomplete, MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { SelectBusComponent } from './select-bus.component';
 
@@ -8,7 +9,8 @@ describe('SelectBusComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SelectBusComponent ]
+      declarations: [ SelectBusComponent ],
+      imports: [MatAutocompleteModule]
     })
     .compileComponents();
   });
@@ -19,4 +21,7 @@ describe('SelectBusComponent', () => {
     fixture.detectChanges();
   });
 
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });
