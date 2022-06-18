@@ -30,7 +30,7 @@ jobs:
           npm run gh-pages
           
     - name: run test
-      working-directory: ./urban-ticket-system-scanner
+      working-directory: ./urban-ticket-system
       run: |
         export DISPLAY=:99
         chromedriver --url-base=/wd/hub &
