@@ -10,6 +10,7 @@ import { ResponseLoginData } from '../data/login-response-data';
 import { FacebookLoginData } from '../data/facebook-login-data';
 import { UserRole } from '../data/user-roles';
 import { RoleService } from './role.service';
+import { Router } from '@angular/router';
 
 const registerUrl = '/register';
 const loginUrl = '/login';
@@ -34,6 +35,7 @@ export class AuthService {
 		private readonly hashingService : HashingService, 
 		private tokenService: TokenService,
 		private roleService: RoleService,
+		private route: Router,
 		@Inject('BASE_API_URL') private baseUrl: string) {}
 
 	redirectUrl = '';
@@ -77,5 +79,6 @@ export class AuthService {
 	logout(): void {
 		this.tokenService.removeToken();
 		this.roleService.removeRole();
+		this.route.navigate(['/']);
 	}
 }
