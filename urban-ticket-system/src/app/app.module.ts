@@ -42,6 +42,7 @@ import { ScanTicketComponent } from './ticket-inspector/scan-ticket/scan-ticket.
 import { PopupTicketValidationComponent } from './ticket-inspector/scan-ticket/popup-ticket-validation/popup-ticket-validation.component';
 import { SelectBusComponent } from './ticket-inspector/scan-ticket/select-bus/select-bus.component';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { QrCodeScannerComponent } from './ticket-inspector/scan-ticket/qr-code-scanner/qr-code-scanner.component';
 import { FireworksComponent } from './ticket-inspector/fireworks/fireworks.component';
 import { PopupTicketErrorHandlerComponent } from './ticket-inspector/scan-ticket/popup-ticket-error-handler/popup-ticket-error-handler.component';
@@ -91,9 +92,10 @@ import { PopupTicketErrorHandlerComponent } from './ticket-inspector/scan-ticket
 		SocialLoginModule,
 		FontAwesomeModule,
 		MatTooltipModule,
+		ZXingScannerModule,
 		QRCodeModule
 		 ],
-	providers: [ { provide: 'BASE_API_URL', useValue: 'http://localhost:8080' },
+	providers: [ { provide: 'BASE_API_URL', useValue: 'https://urban-ticket-system-backend.herokuapp.com'  },
 				 {
 					 provide: 'SocialAuthServiceConfig',
 					 useValue: {
