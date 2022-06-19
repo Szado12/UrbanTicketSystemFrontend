@@ -78,11 +78,11 @@ export class ClientComponent implements OnInit {
         break;
       case 2:
         this.userTickets = this.allTickets
-          .filter(t => t.status == TicketStatus.VALID && moment() <= moment(t.validatedTime).add(t.type.minutesOfValidity, 'm').add(t.type.daysOfValidity, 'd'))
+          .filter(t => t.status == TicketStatus.VALID)
         break;
       case 3:
         this.userTickets = this.allTickets
-          .filter(t => t.status == TicketStatus.INVALID && moment() > moment(t.validatedTime).add(t.type.minutesOfValidity, 'm').add(t.type.daysOfValidity, 'd'))
+          .filter(t => t.status == TicketStatus.INVALID)
         break;
     }
   }
