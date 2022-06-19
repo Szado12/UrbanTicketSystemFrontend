@@ -73,6 +73,8 @@ export class AuthService {
 
 	clientRegister(data: ClientRegisterData): Observable<boolean> {
 		data.password = this.hashingService.hashString(data.password);
+		this.tokenService.removeToken();
+		this.roleService.removeRole();
 		return this.http.post<boolean>(this.baseUrl + registerUrl, data);
 	}
 

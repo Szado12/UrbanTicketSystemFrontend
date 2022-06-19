@@ -26,6 +26,9 @@ export class ClientRegisterComponent {
 
 	constructor(private authService: AuthService, private route: Router) {}
 
+	goToLogin() {
+		this.route.navigate(["auth/client/login"]);
+	}
 	register() {
 		this.accountAlreadyExist = false;
 		this.loading = true; 

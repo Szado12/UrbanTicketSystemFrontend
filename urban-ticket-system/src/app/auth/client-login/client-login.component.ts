@@ -32,6 +32,10 @@ export class ClientLoginComponent {
 
 	constructor(private authService: AuthService, private socialAuthService: SocialAuthService, private route: Router) {}
 
+	goToRegister() {
+		this.route.navigate(["auth/client/register"]);
+	}
+
 	login() {
 		this.loginError = false;
 		this.loading = true; 
